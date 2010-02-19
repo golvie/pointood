@@ -1,3 +1,8 @@
+package com.controller;
+
+import com.points.Point;
+import com.points.Route;
+
 
 /**
  * @author J
@@ -24,6 +29,7 @@ public class Controller implements Control {
 	public double distance(){
 		return route.length();
 	}
+	
 	public void print(){
 		route.print();
 	}

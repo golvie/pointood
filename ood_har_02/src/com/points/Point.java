@@ -1,3 +1,5 @@
+package com.points;
+
 
 /**
  * @author J
