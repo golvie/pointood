@@ -10,7 +10,7 @@ import com.points.Route;
  */
 public class Controller implements Control {
 
-	Route route = new Route();
+	private Route route = new Route();
 	
 	@Override
 	public void add(double x, double y){
@@ -27,28 +27,11 @@ public class Controller implements Control {
 	
 	@Override
 	public double distance(){
-		return route.length();
+		return route.distance();
 	}
 	
 	public void print(){
 		route.print();
 	}
 
-	
-	/*
-	public static void main(String[] args) {
-	
-		Controller c = new Controller();
-		c.add(10, 20);
-		c.add(17, 0);
-		c.add(17, 10);
-		
-		c.print();
-		
-		c.remove(17.00,0.00);
-		c.remove(17.00,1.00);
-		c.print();
-		System.out.println("Distance: " +c.distance());
-	}
-	*/
 }
