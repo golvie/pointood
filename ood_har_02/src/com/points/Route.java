@@ -18,7 +18,7 @@ public class Route {
 	}
 	
 	public boolean remove(Point p){
-		if(getIdx(p)>-1){
+		if(contains(p)){
 			points.remove(this.getIdx(p));
 			return true;
 		}
@@ -34,11 +34,14 @@ public class Route {
 		return length;
 	}
 
+	private boolean contains(Point p){
+		return (getIdx(p)>-1) ? true : false;
+	}
 	
 	private int getIdx(Point p){
 		int idx=-1;
 		for(int i=0;i<points.size();i++){
-			if(p.eqCrd(points.get(i))){
+			if(p.equalCoord(points.get(i))){
 				idx=i;
 			}
 		}

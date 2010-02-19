@@ -39,7 +39,7 @@ public class Point {
 		return this.y;
 	}
 	
-	public boolean eqCrd(Point p){
+	public boolean equalCoord(Point p){
 		return (this.x()==p.x() && this.y()==p.y()) ? true : false;
 	}
 	
