@@ -1,3 +1,8 @@
+package com.test;
+
+import com.controller.Controller;
+import com.util.input;
+
 
 public class test {
 	public static void main(String[] args) {
