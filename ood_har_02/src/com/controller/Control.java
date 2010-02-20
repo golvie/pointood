@@ -1,7 +1,7 @@
 package com.controller;
 
 
-public interface Control{
+public interface Control<E> {
 	
 	public void add(double x, double y);
 	

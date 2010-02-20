@@ -13,13 +13,13 @@ public class Route {
 	private ArrayList<Point> points = new ArrayList<Point>();
 	
 	
-	public void add(Point p){
-		points.add(p);
+	public void add(double x, double y){
+		points.add(new Point(x,y));
 	}
 	
-	public boolean remove(Point p){
-		if(contains(p)){
-			points.remove(this.getIdx(p));
+	public boolean remove(double x, double y){
+		if(contains(new Point(x,y))){
+			points.remove(this.getIdx(new Point(x,y)));
 			return true;
 		}
 		else

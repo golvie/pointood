@@ -18,7 +18,7 @@ public class TestController extends TestCase {
 	 * @param name
 	 */
 	
-	private Control c;
+	private Control<?> c;
 	
 	public TestController(String name) {
 		super(name);
