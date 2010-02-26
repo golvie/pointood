@@ -14,6 +14,7 @@ public class Controller implements Control<Route> {
 	@Override
 	public void add(double x, double y){
 		route.add(x,y);
+		System.out.println("add point: ("+x+";"+y+"), distane: "+distance());
 	}
 	
 	@Override
