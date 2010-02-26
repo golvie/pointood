@@ -18,7 +18,7 @@ public class TestController extends TestCase {
 	 * @param name
 	 */
 	
-	private Control<?> c;
+	private Controller c;
 	
 	public TestController(String name) {
 		super(name);
@@ -44,14 +44,22 @@ public class TestController extends TestCase {
 	 * Test method for {@link com.controller.Controller#add(double, double)}.
 	 */
 	public final void testAdd() {
+		System.out.println("testAdd() ");
+		System.out.print("before adding: ");
+		c.print();
 		c.add(3, 4);
+		c.add(-3, -4);
+		c.add(5, 7);
+		System.out.print("after adding: ");
+		c.print();
+		System.out.println("<=================>");
 	}
 
 	/**
 	 * Test method for {@link com.controller.Controller#remove(double, double)}.
 	 */
 	public final void testRemove() {
-		c.remove(2, 5);
+		c.remove(5, 7);
 	}
 
 	/**
