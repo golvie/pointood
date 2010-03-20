@@ -34,6 +34,7 @@ public class Application extends JFrame {
 	private JPanel buttonPanel;
 	private PSController controller;
 	private ArrayList<Point> po_dict;
+	private ArrayList<Point> no_dict;
 	private int planet_width;
 	private int zoom;
 	private int auto_speed;
@@ -50,6 +51,7 @@ public class Application extends JFrame {
 		auto_on = false;
 		cx = cy = 300;
 		po_dict = new ArrayList<Point>();
+		no_dict = new ArrayList<Point>();
 		
 		publicpanel = new JPanel();
 		drawPanel = new JPanel();
@@ -96,20 +98,28 @@ public class Application extends JFrame {
 		this.delete_planets();
 		this.draw_planets();
 	}
-	
+	int c = 0;
 	public void paint(Graphics g) {       		
         //super.paint(g);
-		//repaint();
+		
+		System.out.println("paint "+ c++);
         drawLines(g);
+        eraseLines(g);
 	}
 	
-	private void drawLines(Graphics g) {
+	private void drawLines(Graphics g) {		
 		g.setColor(Color.yellow);
 		g.fillOval(cx, cy, planet_width, planet_width);
 		
 		g.setColor(Color.white);
 		for(int i=0; i<po_dict.size(); i++)
 			g.fillOval(po_dict.get(i).x, po_dict.get(i).y, planet_width, planet_width);
+	}
+	
+	private void eraseLines(Graphics g) {
+		g.setColor(Color.black);
+		for(int i=0; i<no_dict.size(); i++)
+			g.fillOval(no_dict.get(i).x, no_dict.get(i).y, planet_width, planet_width);
 	}
 	
 	private void createWidgets() {
@@ -119,8 +129,6 @@ public class Application extends JFrame {
 		buttonPanel.setSize(100, cy*2);
 		publicpanel.setLayout(new BorderLayout());
 		this.setSize(cx*2+100, cy*2);
-		
-		
 		
 		JButton bTick = new JButton("Tick");
 		JButton bAuto = new JButton("Auto");
@@ -174,7 +182,6 @@ public class Application extends JFrame {
 	public void draw_planets() {
 		for(int id=0; id<this.controller.system().len(); id++)
 			this.draw_planet(id, controller.system().get(id).x(), controller.system().get(id).y());
-		System.out.println("drawPanel.repaint();");
 		paint(getGraphics());
 		
 	}
@@ -186,6 +193,8 @@ public class Application extends JFrame {
 	}
 	
 	public void move_planets() {
+		no_dict.clear();
+		no_dict.addAll(po_dict);
 		for(int i=0; i < controller.system().len(); i++)
 			move_planet(i, controller.system().get(i).x(), controller.system().get(i).y());
 		paint(getGraphics());
@@ -197,13 +206,14 @@ public class Application extends JFrame {
 	}
 	
 	public void delete_planets() {
-		po_dict.removeAll(po_dict);
+		po_dict.clear();
 	}
 	
 	public void launch() {
 		SpaceShip ship = controller.launch(-30, 0.5, 0.5);
 		int id = this.controller.system().len() - 1;
 		draw_planet(id, ship.x(), ship.y());
+		paint(getGraphics());
 	}
 	
 	/*---------------------------------------
