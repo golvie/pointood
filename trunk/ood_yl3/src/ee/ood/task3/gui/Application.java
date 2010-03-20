@@ -62,14 +62,17 @@ public class Application extends JFrame {
 		this.make_solar_system();
 		this.getContentPane().add("Center", publicpanel);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.repaint();
 	}
 	
 	public void tick() {
+		repaint();
 		this.controller.tick();
 		this.move_planets();
 	}
 	
 	public void tick100() {
+		repaint();
 		this.controller.multi_tick(100);
 		this.move_planets();
 	}
@@ -100,34 +103,31 @@ public class Application extends JFrame {
 	}
 	int c = 0;
 	public void paint(Graphics g) {       		
-        //super.paint(g);
+       // super.paint(g);
 		
 		System.out.println("paint "+ c++);
         drawLines(g);
-        eraseLines(g);
 	}
 	
 	private void drawLines(Graphics g) {		
 		g.setColor(Color.yellow);
 		g.fillOval(cx, cy, planet_width, planet_width);
-		
 		g.setColor(Color.white);
 		for(int i=0; i<po_dict.size(); i++)
 			g.fillOval(po_dict.get(i).x, po_dict.get(i).y, planet_width, planet_width);
-	}
-	
-	private void eraseLines(Graphics g) {
+		//erase trace
 		g.setColor(Color.black);
 		for(int i=0; i<no_dict.size(); i++)
 			g.fillOval(no_dict.get(i).x, no_dict.get(i).y, planet_width, planet_width);
 	}
-	
+
 	private void createWidgets() {
 		drawPanel.setLayout(new FlowLayout());
 		drawPanel.setBackground(Color.black);
 		buttonPanel.setLayout((new BoxLayout(buttonPanel, BoxLayout.Y_AXIS)));
 		buttonPanel.setSize(100, cy*2);
 		publicpanel.setLayout(new BorderLayout());
+		publicpanel.setSize(cx*2, cy*2);
 		this.setSize(cx*2+100, cy*2);
 		
 		JButton bTick = new JButton("Tick");
@@ -152,7 +152,7 @@ public class Application extends JFrame {
 			}
 		});
 		bDefault.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
+			public void actionPerformed(ActionEvent e) {	
 				make_solar_system();
 			}
 		});
@@ -180,6 +180,7 @@ public class Application extends JFrame {
 	}
 	
 	public void draw_planets() {
+		
 		for(int id=0; id<this.controller.system().len(); id++)
 			this.draw_planet(id, controller.system().get(id).x(), controller.system().get(id).y());
 		paint(getGraphics());
@@ -207,6 +208,7 @@ public class Application extends JFrame {
 	
 	public void delete_planets() {
 		po_dict.clear();
+		repaint();
 	}
 	
 	public void launch() {
@@ -220,8 +222,6 @@ public class Application extends JFrame {
 	 * --------------MAIN--------------------
 	 * -------------------------------------*/
 	public static void main(String[] args) {
-		new Application("Planet System");
-		
+		new Application("Planet System");	
 	}
-	
 }
