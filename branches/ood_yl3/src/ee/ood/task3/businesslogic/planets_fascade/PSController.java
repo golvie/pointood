@@ -35,7 +35,7 @@ public class PSController {
 		for (int i=0; i<astro_data.length; i++)
 			this.sys.append(new Planet(astro_data[i][1], 0.0, (2 * Math.PI) / (astro_data[i][0] * T)));
 		
-		//System.out.println(this.system());
+		System.out.println(sys);
 	}
 	
 	public PlanetarySystem<PlanetaryElementImpl> system() {
@@ -52,10 +52,13 @@ public class PSController {
 			this.tick();
 	}
 	
-	public SpaceShip launch(double xy, double dx, double dy) {
-		SpaceShip sp = new SpaceShip(xy, xy, dx, dy);
-		sys.append( sp );
-		return sp;
+	public SpaceShip launch(int planet_id , double dx, double dy) {
+		Planet pl;
+		if((pl = (Planet) sys.get(planet_id)) != null) {	
+			SpaceShip sp = new SpaceShip( pl.x(), pl.y(), dx, dy );
+			sys.append(sp);
+			return sp;
+		} else 
+			return null;
 	}
-	
 }
