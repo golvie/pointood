@@ -3,7 +3,7 @@
  */
 package ee.ood.task3.businesslogic.planets_fascade;
 
-import ee.ood.task3.businesslogic.geom.PointSimulationElement;
+import ee.ood.task3.businesslogic.geom.PlanetaryElementImpl;
 import ee.ood.task3.businesslogic.planets.Planet;
 import ee.ood.task3.businesslogic.planets.PlanetarySystem;
 import ee.ood.task3.businesslogic.planets.SpaceShip;
@@ -14,11 +14,11 @@ import ee.ood.task3.businesslogic.planets.SpaceShip;
  */
 public class PSController {
 	
-	private PlanetarySystem<PointSimulationElement> sys;
+	private PlanetarySystem<PlanetaryElementImpl> sys;
 	
 	public void make_solar_system() {
 		
-		this.sys = new PlanetarySystem<PointSimulationElement>();
+		this.sys = new PlanetarySystem<PlanetaryElementImpl>();
 		int T=4;
 		double[][] astro_data = { 
 				{87.97/365.26, 0.39},
@@ -38,7 +38,7 @@ public class PSController {
 		//System.out.println(this.system());
 	}
 	
-	public PlanetarySystem<PointSimulationElement> system() {
+	public PlanetarySystem<PlanetaryElementImpl> system() {
 		return this.sys;
 	}
 	

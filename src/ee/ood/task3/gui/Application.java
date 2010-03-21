@@ -59,10 +59,10 @@ public class Application extends JFrame {
 		
 		this.setVisible(true);
 		this.createWidgets();
-		this.make_solar_system();
+		
 		this.getContentPane().add("Center", publicpanel);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.repaint();
+		this.make_solar_system();
 	}
 	
 	public void tick() {
@@ -180,7 +180,7 @@ public class Application extends JFrame {
 	}
 	
 	public void draw_planets() {
-		
+		super.paint(getGraphics());
 		for(int id=0; id<this.controller.system().len(); id++)
 			this.draw_planet(id, controller.system().get(id).x(), controller.system().get(id).y());
 		paint(getGraphics());
