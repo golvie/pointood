@@ -31,7 +31,7 @@ public class TestPS extends TestCase {
         ps.append(new Planet(1.2, 3.4, Math.PI/10));
         
         ps.append(new SpaceShip(5, 5, 2, 3));
-        ps.append(new SpaceShip(8, 6, 1, 4));
+        ps.append(new SpaceShip(10, 0, 0.1, 0.1));
 	}
 	
 	protected void tearDown() throws Exception {

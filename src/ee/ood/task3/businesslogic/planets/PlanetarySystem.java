@@ -4,7 +4,6 @@
 package ee.ood.task3.businesslogic.planets;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import ee.ood.task3.businesslogic.geom.PlanetaryElement;
 import ee.ood.task3.businesslogic.geom.PlanetaryElementImpl;
@@ -16,40 +15,35 @@ import ee.ood.task3.businesslogic.geom.PlanetaryElementImpl;
  * Mar 18, 2010
  * @param <T>
  */
-public class PlanetarySystem<T extends PlanetaryElementImpl> implements PlanetaryElement {
+@SuppressWarnings("serial")
+public class PlanetarySystem<T extends PlanetaryElementImpl> 
+	extends ArrayList<T> implements PlanetaryElement {
 	
-	private List<T> elements;
-	
-	public PlanetarySystem() {
-		elements = new ArrayList<T>();
-	}
-	
+	//private List<T> elements;
+
 	public void tick() {
-		for ( T item : elements )
+		for ( T item : this )
 			item.tick();
 	}
 	
 	public double distance(int planetA, int planetB) {
 		
-		return elements.get(planetA).distance(elements.get(planetB));
+		return this.get(planetA).distance(this.get(planetB));
+	}
+	
+	public void append(T element) {
+		this.add(element);
+	}
+	
+	public int len() {
+		return this.size();
 	}
 	
 	public String toString() {
 		String planets = "";
-		for(T p : elements)
+		for(T p : this)
 			planets += p.toString()+"\n";
 		return "\n---\n"+planets;
-	}
-	
-	public void append(T element) {
-		elements.add(element);
-	}
-	public T get(int id){
-		return elements.get(id);
-	}
-	
-	public int len() {
-		return elements.size();
 	}
 	
 	public static void main(String [] args) {

@@ -25,7 +25,5 @@ public class SpaceShip extends PlanetaryElementImpl {
 	public void tick() {
 		translate(dx, dy);
 	}
-
-	
 	
 }

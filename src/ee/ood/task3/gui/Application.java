@@ -86,7 +86,6 @@ public class Application extends JFrame {
 		Timer t = new Timer();
 		if(auto_on){
 			this.tick();
-			//System.out.print("tick..");
 			TimerTask tt= new TimerTask() {
 				public void run() {
 					autoTick();	
@@ -103,10 +102,9 @@ public class Application extends JFrame {
 	}
 	int c = 0;
 	public void paint(Graphics g) {       		
-       // super.paint(g);
-		
+       // super.paint(g);		
 		System.out.println("paint "+ c++);
-        drawLines(g);
+        drawLines(drawPanel.getGraphics());
 	}
 	
 	private void drawLines(Graphics g) {		
@@ -174,8 +172,6 @@ public class Application extends JFrame {
 	public Point conv_coord(double x, double y) {
 		int x0 = (int) (this.cx + x * this.zoom);
 		int y0 = (int) (this.cy + y * this.zoom);
-		//int x1 = x0 + this.planet_width;
-		//int y1 = y0 + this.planet_width;
 		return new Point(x0,y0);
 	}
 	
@@ -212,7 +208,7 @@ public class Application extends JFrame {
 	}
 	
 	public void launch() {
-		SpaceShip ship = controller.launch(-30, 0.5, 0.5);
+		SpaceShip ship = controller.launch(3, 0.5, 0.5);
 		int id = this.controller.system().len() - 1;
 		draw_planet(id, ship.x(), ship.y());
 		paint(getGraphics());
