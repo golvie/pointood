@@ -6,7 +6,8 @@ package ee.ood.task3.businesslogic.planets;
 import java.util.ArrayList;
 import java.util.List;
 
-import ee.ood.task3.businesslogic.geom.PointSimulationElement;
+import ee.ood.task3.businesslogic.geom.PlanetaryElement;
+import ee.ood.task3.businesslogic.geom.PlanetaryElementImpl;
 
 //import ee.ood.task3.businesslogic.geom.SimulationElement;
 
@@ -15,7 +16,7 @@ import ee.ood.task3.businesslogic.geom.PointSimulationElement;
  * Mar 18, 2010
  * @param <T>
  */
-public class PlanetarySystem<T extends PointSimulationElement> {
+public class PlanetarySystem<T extends PlanetaryElementImpl> implements PlanetaryElement {
 	
 	private List<T> elements;
 	

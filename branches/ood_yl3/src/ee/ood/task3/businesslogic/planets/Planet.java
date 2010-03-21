@@ -1,6 +1,6 @@
 package ee.ood.task3.businesslogic.planets;
 
-import ee.ood.task3.businesslogic.geom.PointSimulationElement;
+import ee.ood.task3.businesslogic.geom.PlanetaryElementImpl;
 
 /**
  * 
@@ -10,7 +10,7 @@ import ee.ood.task3.businesslogic.geom.PointSimulationElement;
  * @author Jaroslav Judin
  * Mar 18, 2010
  */
-public class Planet extends PointSimulationElement {
+public class Planet extends PlanetaryElementImpl {
 
 	/**
 	 * 
