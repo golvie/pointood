@@ -53,12 +53,12 @@ public class PSController {
 	}
 	
 	public SpaceShip launch(int planet_id , double dx, double dy) {
-		Planet pl;
-		if((pl = (Planet) sys.get(planet_id)) != null) {	
+		if(sys.len()>=planet_id) {	
+			Planet pl = (Planet) sys.get(planet_id);
 			SpaceShip sp = new SpaceShip( pl.x(), pl.y(), dx, dy );
 			sys.append(sp);
 			return sp;
 		} else 
-			return null;
+			return new SpaceShip(0,0,0,0);
 	}
 }

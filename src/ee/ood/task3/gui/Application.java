@@ -207,11 +207,19 @@ public class Application extends JFrame {
 		repaint();
 	}
 	
+	int xdir=1;
+	int ydir=1;
+	int cntdir=0;
 	public void launch() {
-		SpaceShip ship = controller.launch(3, 0.5, 0.5);
+		SpaceShip ship = controller.launch(5, 0.5*xdir, 0.5*ydir);
 		int id = this.controller.system().len() - 1;
 		draw_planet(id, ship.x(), ship.y());
 		paint(getGraphics());
+		cntdir++;
+		if(cntdir%4==0) ydir *=-1;
+		else if(cntdir%3==0) xdir *=-1;
+		else if(cntdir%2==0) ydir *=-1;
+		else if(cntdir%1==0) xdir *=-1;
 	}
 	
 	/*---------------------------------------
