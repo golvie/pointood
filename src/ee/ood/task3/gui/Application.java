@@ -29,38 +29,34 @@ import ee.ood.task3.businesslogic.planets_fascade.PSController;
 @SuppressWarnings("serial")
 public class Application extends JFrame {
 
-	private JPanel publicpanel;
+	//private JPanel publicpanel;
 	private JPanel drawPanel;
 	private JPanel buttonPanel;
 	private PSController controller;
 	private ArrayList<Point> po_dict;
 	private ArrayList<Point> no_dict;
-	private int planet_width;
-	private int zoom;
-	private int auto_speed;
-	private boolean auto_on;
-	private int cx, cy;
+	private final int planet_width = 3;
+	private final int zoom = 6;
+	private final int auto_speed = 100;
+	private boolean auto_on = false;
+	private final int cx = 400;
+	private final int cy = 320;
 	
 	public Application(String name) {
 		super(name);
 		
 		controller = new PSController();
-		planet_width = 3;
-		zoom = 6;
-		auto_speed = 100;
-		auto_on = false;
-		cx = cy = 300;
 		po_dict = new ArrayList<Point>();
 		no_dict = new ArrayList<Point>();
 		
-		publicpanel = new JPanel();
+		//publicpanel = new JPanel();
 		drawPanel = new JPanel();
 		buttonPanel = new JPanel();
 		
 		this.setVisible(true);
 		this.createWidgets();
 		
-		this.getContentPane().add("Center", publicpanel);
+		//this.getContentPane().add("Center", publicpanel);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.make_solar_system();
 	}
@@ -100,10 +96,10 @@ public class Application extends JFrame {
 		this.delete_planets();
 		this.draw_planets();
 	}
-	int c = 0;
+	
 	public void paint(Graphics g) {       		
-       // super.paint(g);		
-		System.out.println("paint "+ c++);
+        //super.paint(g);	
+		drawPanel.paint(g);
         drawLines(drawPanel.getGraphics());
 	}
 	
@@ -120,13 +116,16 @@ public class Application extends JFrame {
 	}
 
 	private void createWidgets() {
-		drawPanel.setLayout(new FlowLayout());
+		//drawPanel.setLayout(new FlowLayout());
 		drawPanel.setBackground(Color.black);
+		buttonPanel.setBackground(Color.gray);
+		//drawPanel.setSize(cx*2-100, cy*2-100);
 		buttonPanel.setLayout((new BoxLayout(buttonPanel, BoxLayout.Y_AXIS)));
-		buttonPanel.setSize(100, cy*2);
-		publicpanel.setLayout(new BorderLayout());
-		publicpanel.setSize(cx*2, cy*2);
-		this.setSize(cx*2+100, cy*2);
+		//buttonPanel.setSize(150, cy*2-50);
+		//publicpanel.setLayout(new BorderLayout());
+		//publicpanel.setSize(cx*2, cy*2);
+		this.setLayout(new BorderLayout());
+		this.setSize(cx*2, cy*2);
 		
 		JButton bTick = new JButton("Tick");
 		JButton bAuto = new JButton("Auto");
@@ -165,8 +164,10 @@ public class Application extends JFrame {
 		buttonPanel.add( bDefault );
 		buttonPanel.add( bLaunch );
 		
-		publicpanel.add(BorderLayout.CENTER,drawPanel);
-		publicpanel.add(BorderLayout.EAST,buttonPanel);
+		//publicpanel.add(BorderLayout.CENTER,drawPanel);
+		//publicpanel.add(BorderLayout.EAST,buttonPanel);
+		this.getContentPane().add(BorderLayout.CENTER,drawPanel);
+		this.getContentPane().add(BorderLayout.EAST,buttonPanel);
 	}
 	
 	public Point conv_coord(double x, double y) {
@@ -178,15 +179,12 @@ public class Application extends JFrame {
 	public void draw_planets() {
 		super.paint(getGraphics());
 		for(int id=0; id<this.controller.system().len(); id++)
-			this.draw_planet(id, controller.system().get(id).x(), controller.system().get(id).y());
-		paint(getGraphics());
-		
+			draw_planet(id, controller.system().get(id).x(), controller.system().get(id).y());
 	}
 	
 	public void draw_planet(int planet_id, double x, double y) {
 		Point coord = this.conv_coord(x, y); 
 		this.po_dict.add(planet_id, coord);
-		//paint(getGraphics());
 	}
 	
 	public void move_planets() {
@@ -207,19 +205,11 @@ public class Application extends JFrame {
 		repaint();
 	}
 	
-	int xdir=1;
-	int ydir=1;
-	int cntdir=0;
 	public void launch() {
-		SpaceShip ship = controller.launch(5, 0.5*xdir, 0.5*ydir);
+		SpaceShip ship = controller.launch(5, 0.5, 0.5);
 		int id = this.controller.system().len() - 1;
 		draw_planet(id, ship.x(), ship.y());
 		paint(getGraphics());
-		cntdir++;
-		if(cntdir%4==0) ydir *=-1;
-		else if(cntdir%3==0) xdir *=-1;
-		else if(cntdir%2==0) ydir *=-1;
-		else if(cntdir%1==0) xdir *=-1;
 	}
 	
 	/*---------------------------------------

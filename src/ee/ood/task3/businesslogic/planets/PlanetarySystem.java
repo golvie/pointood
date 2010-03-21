@@ -5,21 +5,17 @@ package ee.ood.task3.businesslogic.planets;
 
 import java.util.ArrayList;
 
-import ee.ood.task3.businesslogic.geom.PlanetaryElement;
-import ee.ood.task3.businesslogic.geom.PlanetaryElementImpl;
 
-//import ee.ood.task3.businesslogic.geom.SimulationElement;
 
 /**
  * @author Jaroslav Judin
  * Mar 18, 2010
  * @param <T>
  */
-@SuppressWarnings("serial")
-public class PlanetarySystem<T extends PlanetaryElementImpl> 
-	extends ArrayList<T> implements PlanetaryElement {
+
+public class PlanetarySystem<T extends SpaceObject> extends ArrayList<T> {
 	
-	//private List<T> elements;
+	private static final long serialVersionUID = 1L;
 
 	public void tick() {
 		for ( T item : this )

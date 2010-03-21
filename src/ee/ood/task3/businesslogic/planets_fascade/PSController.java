@@ -3,9 +3,9 @@
  */
 package ee.ood.task3.businesslogic.planets_fascade;
 
-import ee.ood.task3.businesslogic.geom.PlanetaryElementImpl;
 import ee.ood.task3.businesslogic.planets.Planet;
 import ee.ood.task3.businesslogic.planets.PlanetarySystem;
+import ee.ood.task3.businesslogic.planets.SpaceObject;
 import ee.ood.task3.businesslogic.planets.SpaceShip;
 
 /**
@@ -14,11 +14,11 @@ import ee.ood.task3.businesslogic.planets.SpaceShip;
  */
 public class PSController {
 	
-	private PlanetarySystem<PlanetaryElementImpl> sys;
+	private PlanetarySystem<SpaceObject> sys;
 	
 	public void make_solar_system() {
 		
-		this.sys = new PlanetarySystem<PlanetaryElementImpl>();
+		this.sys = new PlanetarySystem<SpaceObject>();
 		int T=4;
 		double[][] astro_data = { 
 				{87.97/365.26, 0.39},
@@ -35,10 +35,10 @@ public class PSController {
 		for (int i=0; i<astro_data.length; i++)
 			this.sys.append(new Planet(astro_data[i][1], 0.0, (2 * Math.PI) / (astro_data[i][0] * T)));
 		
-		System.out.println(sys);
+		//System.out.println(sys);
 	}
 	
-	public PlanetarySystem<PlanetaryElementImpl> system() {
+	public PlanetarySystem<SpaceObject> system() {
 		return this.sys;
 	}
 	

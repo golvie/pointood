@@ -1,6 +1,5 @@
 package ee.ood.task3.businesslogic.planets;
 
-import ee.ood.task3.businesslogic.geom.PlanetaryElementImpl;
 
 /**
  * 
@@ -10,7 +9,7 @@ import ee.ood.task3.businesslogic.geom.PlanetaryElementImpl;
  * @author Jaroslav Judin
  * Mar 18, 2010
  */
-public class Planet extends PlanetaryElementImpl {
+public class Planet extends SpaceObject {
 
 	/**
 	 * 

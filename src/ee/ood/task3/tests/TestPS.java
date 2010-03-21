@@ -3,9 +3,9 @@
  */
 package ee.ood.task3.tests;
 
-import ee.ood.task3.businesslogic.geom.PlanetaryElementImpl;
 import ee.ood.task3.businesslogic.planets.Planet;
 import ee.ood.task3.businesslogic.planets.PlanetarySystem;
+import ee.ood.task3.businesslogic.planets.SpaceObject;
 import ee.ood.task3.businesslogic.planets.SpaceShip;
 import junit.framework.TestCase;
 
@@ -21,10 +21,10 @@ public class TestPS extends TestCase {
 	public TestPS(String name) {
 		super(name);
 	}
-	PlanetarySystem<PlanetaryElementImpl> ps;
+	PlanetarySystem<SpaceObject> ps;
 	protected void setUp() throws Exception {
 		super.setUp();
-		ps = new PlanetarySystem<PlanetaryElementImpl>();
+		ps = new PlanetarySystem<SpaceObject>();
 		
 		ps.append(new Planet(1.0, 1.0, 0.1));
         ps.append(new Planet(-1.0, 1.0, 0.2));
