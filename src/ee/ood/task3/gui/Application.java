@@ -6,6 +6,7 @@ package ee.ood.task3.gui;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -46,14 +47,8 @@ public class Application extends JFrame {
 		controller = new PSController();
 		po_dict = new ArrayList<Point>();
 		//no_dict = new ArrayList<Point>();
-		
-		drawPanel = new JPanel();
-		buttonPanel = new JPanel();
-		
-		this.setVisible(true);
+
 		this.createWidgets();
-		
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.make_solar_system();
 	}
 	
@@ -91,27 +86,9 @@ public class Application extends JFrame {
 		this.draw_planets();
 	}
 	
-	public void paint(Graphics g) {       		
-        //super.paint(g);
-		for(int i=0; po_dict.size()>0 && i<1; i++) {
-			drawPanel.paint(g);
-	        drawLines(drawPanel.getGraphics());
-		}
-	}
-	
-	private void drawLines(Graphics g) {		
-		g.setColor(Color.yellow);
-		g.fillOval(cx, cy, planet_width, planet_width);
-		g.setColor(Color.white);
-		for(int i=0; i<po_dict.size(); i++)
-			g.fillOval(po_dict.get(i).x, po_dict.get(i).y, planet_width, planet_width);
-		//erase trace
-		g.setColor(Color.black);
-		//for(int i=0; i<no_dict.size(); i++)
-			//g.fillOval(no_dict.get(i).x, no_dict.get(i).y, planet_width, planet_width);
-	}
-
 	private void createWidgets() {
+		drawPanel = new JPanel();
+		buttonPanel = new JPanel();		
 		drawPanel.setBackground(Color.black);
 		buttonPanel.setBackground(Color.gray);
 		buttonPanel.setLayout((new BoxLayout(buttonPanel, BoxLayout.Y_AXIS)));
@@ -157,6 +134,18 @@ public class Application extends JFrame {
 		
 		this.getContentPane().add(BorderLayout.CENTER,drawPanel);
 		this.getContentPane().add(BorderLayout.EAST,buttonPanel);
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setVisible(true);
+	}
+	
+	public void paint(Graphics g) {      
+		Graphics2D g2 = (Graphics2D) drawPanel.getGraphics();
+		drawPanel.paint(g2);	
+        g2.setColor(Color.yellow);
+        g2.fillOval(cx, cy, planet_width, planet_width);
+        g2.setColor(Color.white);
+		for(int i=0; i<po_dict.size(); i++)
+			g2.fillOval(po_dict.get(i).x, po_dict.get(i).y, planet_width, planet_width);
 	}
 	
 	public Point conv_coord(double x, double y) {
@@ -195,7 +184,7 @@ public class Application extends JFrame {
 	}
 	
 	public void launch() {
-		SpaceShip ship = controller.launch(5, -0.5, -0.5);
+		SpaceShip ship = controller.launch(5, 0.5, 0.5);
 		int id = this.controller.system().len() - 1;
 		draw_planet(id, ship.x(), ship.y());
 		paint(getGraphics());
