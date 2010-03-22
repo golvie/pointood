@@ -5,7 +5,6 @@ package ee.ood.task3.gui;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.FlowLayout;
 import java.awt.Graphics;
 import java.awt.Point;
 import java.awt.event.ActionEvent;
@@ -28,47 +27,42 @@ import ee.ood.task3.businesslogic.planets_fascade.PSController;
  */
 @SuppressWarnings("serial")
 public class Application extends JFrame {
-
-	//private JPanel publicpanel;
+	
 	private JPanel drawPanel;
 	private JPanel buttonPanel;
 	private PSController controller;
 	private ArrayList<Point> po_dict;
-	private ArrayList<Point> no_dict;
+	//private ArrayList<Point> no_dict;
 	private final int planet_width = 3;
 	private final int zoom = 6;
 	private final int auto_speed = 100;
 	private boolean auto_on = false;
 	private final int cx = 400;
-	private final int cy = 320;
+	private final int cy = 350;
 	
 	public Application(String name) {
 		super(name);
 		
 		controller = new PSController();
 		po_dict = new ArrayList<Point>();
-		no_dict = new ArrayList<Point>();
+		//no_dict = new ArrayList<Point>();
 		
-		//publicpanel = new JPanel();
 		drawPanel = new JPanel();
 		buttonPanel = new JPanel();
 		
 		this.setVisible(true);
 		this.createWidgets();
 		
-		//this.getContentPane().add("Center", publicpanel);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.make_solar_system();
 	}
 	
 	public void tick() {
-		repaint();
 		this.controller.tick();
 		this.move_planets();
 	}
 	
 	public void tick100() {
-		repaint();
 		this.controller.multi_tick(100);
 		this.move_planets();
 	}
@@ -98,9 +92,11 @@ public class Application extends JFrame {
 	}
 	
 	public void paint(Graphics g) {       		
-        //super.paint(g);	
-		drawPanel.paint(g);
-        drawLines(drawPanel.getGraphics());
+        //super.paint(g);
+		for(int i=0; po_dict.size()>0 && i<1; i++) {
+			drawPanel.paint(g);
+	        drawLines(drawPanel.getGraphics());
+		}
 	}
 	
 	private void drawLines(Graphics g) {		
@@ -111,19 +107,14 @@ public class Application extends JFrame {
 			g.fillOval(po_dict.get(i).x, po_dict.get(i).y, planet_width, planet_width);
 		//erase trace
 		g.setColor(Color.black);
-		for(int i=0; i<no_dict.size(); i++)
-			g.fillOval(no_dict.get(i).x, no_dict.get(i).y, planet_width, planet_width);
+		//for(int i=0; i<no_dict.size(); i++)
+			//g.fillOval(no_dict.get(i).x, no_dict.get(i).y, planet_width, planet_width);
 	}
 
 	private void createWidgets() {
-		//drawPanel.setLayout(new FlowLayout());
 		drawPanel.setBackground(Color.black);
 		buttonPanel.setBackground(Color.gray);
-		//drawPanel.setSize(cx*2-100, cy*2-100);
 		buttonPanel.setLayout((new BoxLayout(buttonPanel, BoxLayout.Y_AXIS)));
-		//buttonPanel.setSize(150, cy*2-50);
-		//publicpanel.setLayout(new BorderLayout());
-		//publicpanel.setSize(cx*2, cy*2);
 		this.setLayout(new BorderLayout());
 		this.setSize(cx*2, cy*2);
 		
@@ -164,8 +155,6 @@ public class Application extends JFrame {
 		buttonPanel.add( bDefault );
 		buttonPanel.add( bLaunch );
 		
-		//publicpanel.add(BorderLayout.CENTER,drawPanel);
-		//publicpanel.add(BorderLayout.EAST,buttonPanel);
 		this.getContentPane().add(BorderLayout.CENTER,drawPanel);
 		this.getContentPane().add(BorderLayout.EAST,buttonPanel);
 	}
@@ -177,9 +166,9 @@ public class Application extends JFrame {
 	}
 	
 	public void draw_planets() {
-		super.paint(getGraphics());
 		for(int id=0; id<this.controller.system().len(); id++)
 			draw_planet(id, controller.system().get(id).x(), controller.system().get(id).y());
+		super.paint(getGraphics());
 	}
 	
 	public void draw_planet(int planet_id, double x, double y) {
@@ -188,8 +177,8 @@ public class Application extends JFrame {
 	}
 	
 	public void move_planets() {
-		no_dict.clear();
-		no_dict.addAll(po_dict);
+		//no_dict.clear();
+		//no_dict.addAll(po_dict);
 		for(int i=0; i < controller.system().len(); i++)
 			move_planet(i, controller.system().get(i).x(), controller.system().get(i).y());
 		paint(getGraphics());
@@ -206,7 +195,7 @@ public class Application extends JFrame {
 	}
 	
 	public void launch() {
-		SpaceShip ship = controller.launch(5, 0.5, 0.5);
+		SpaceShip ship = controller.launch(5, -0.5, -0.5);
 		int id = this.controller.system().len() - 1;
 		draw_planet(id, ship.x(), ship.y());
 		paint(getGraphics());
