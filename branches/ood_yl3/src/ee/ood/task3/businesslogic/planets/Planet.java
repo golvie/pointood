@@ -26,6 +26,7 @@ public class Planet extends SpaceObject {
 		return this.omega;
 	}
 	
+	@Override
 	public void tick() {
 		this.centre_rotate(this.omega);
 	}
