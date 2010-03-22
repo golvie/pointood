@@ -20,6 +20,7 @@ public class AllTests {
 		//$JUnit-BEGIN$
 		suite.addTestSuite(TestPlanet.class);
 		suite.addTestSuite(TestPS.class);
+		suite.addTestSuite(TestSpaceShip.class);
 		//$JUnit-END$
 		return suite;
 	}

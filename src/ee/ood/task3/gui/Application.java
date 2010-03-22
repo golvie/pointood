@@ -184,7 +184,7 @@ public class Application extends JFrame {
 	}
 	
 	public void launch() {
-		SpaceShip ship = controller.launch(5, 0.5, 0.5);
+		SpaceShip ship = controller.launch(4, 0.5, 0.5);
 		int id = this.controller.system().len() - 1;
 		draw_planet(id, ship.x(), ship.y());
 		paint(getGraphics());
