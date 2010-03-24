@@ -33,7 +33,6 @@ public class Application extends JFrame {
 	private JPanel buttonPanel;
 	private PSController controller;
 	private ArrayList<Point> po_dict;
-	//private ArrayList<Point> no_dict;
 	private final int planet_width = 3;
 	private final int zoom = 6;
 	private final int auto_speed = 100;
@@ -46,7 +45,6 @@ public class Application extends JFrame {
 		
 		controller = new PSController();
 		po_dict = new ArrayList<Point>();
-		//no_dict = new ArrayList<Point>();
 
 		this.createWidgets();
 		this.make_solar_system();
@@ -166,8 +164,6 @@ public class Application extends JFrame {
 	}
 	
 	public void move_planets() {
-		//no_dict.clear();
-		//no_dict.addAll(po_dict);
 		for(int i=0; i < controller.system().len(); i++)
 			move_planet(i, controller.system().get(i).x(), controller.system().get(i).y());
 		paint(getGraphics());

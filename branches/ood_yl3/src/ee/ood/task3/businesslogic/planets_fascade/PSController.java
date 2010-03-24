@@ -35,7 +35,6 @@ public class PSController {
 		for (int i=0; i<astro_data.length; i++)
 			this.sys.append(new Planet(astro_data[i][1], 0.0, (2 * Math.PI) / (astro_data[i][0] * T)));
 		
-		//System.out.println(sys);
 	}
 	
 	public PlanetarySystem<SpaceObject> system() {
@@ -53,7 +52,7 @@ public class PSController {
 	}
 	
 	public SpaceShip launch(int planet_id , double dx, double dy) {
-		if(sys.len()>=planet_id) {	
+		if(sys.len()>=planet_id && planet_id > -1) {	
 			Planet pl = (Planet) sys.get(planet_id);
 			SpaceShip sp = new SpaceShip( pl.x(), pl.y(), dx, dy );
 			sys.append(sp);
