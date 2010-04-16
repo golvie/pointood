@@ -4,38 +4,54 @@ import java.sql.* ;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
+import com.epood.log.MyLogger;
+import com.epood.model.data.customer.Customer;
+
 //import org.apache.commons.codec.binary.Hex;
 
 public class UserDB {
 
-	 String sql = "" ;
+	 static String sql = "" ;
      dbconnection dbconnection ;
 	 java.sql.Connection myConnection ;
 	 ResultSet QueryResult ;
 	 Statement st ;
 	 int record_cnt = 0;
+	 Customer customer = null;
 
-
- public String  getUserFromDB(String name, String pwd) {
-	String out_name = "";
+	 public static void main( String args[] ){
+		 UserDB UsAuth = new UserDB();
+		 Customer cust = UsAuth.getUserFromDB("user1", "user1");
+		 System.out.println(cust.getFirstName());
+	 }
+	 
+ public Customer  getUserFromDB(String name, String pwd) {
+	
+	 MyLogger log = new MyLogger();
+	
 	try {
 		//dbconnection = new dbconnection();
 		myConnection = new dbconnection().getConnection();
 		st = myConnection.createStatement();//new dbconnection().getConnection()
-		sql = "select username, passw, first_name, last_name  from cst_user as u inner join customer as c on c.customer=u.customer where username like '" + name + "' and passw like '"+md5(pwd)+"'" ;
+		sql = "select username, passw, first_name, last_name, c.customer  from cst_user as u inner join customer as c on c.customer=u.customer where username like '" + name + "' and passw like '"+md5(pwd)+"'" ;
 		QueryResult = st.executeQuery(sql);
 		
 		while(QueryResult.next()) {
-			out_name = QueryResult.getString("first_name")+" "+QueryResult.getString("last_name");
-            record_cnt =  record_cnt + 1;
+			customer = new Customer();
+			customer.setFirstName(QueryResult.getString("first_name"));
+			customer.setLastName(QueryResult.getString("last_name"));
+			customer.setUsername(QueryResult.getString("username"));
+			customer.setPassword(QueryResult.getString("passw"));
+			customer.setCustomerId(Integer.parseInt(QueryResult.getString("customer")));
+            record_cnt++;
 		}
         myConnection.close();
-		if (record_cnt < 0) 
-			out_name="";
-    } catch(Exception ex) {
-		ex.printStackTrace();
+    } catch(NumberFormatException ex) {
+		log.Log("GetUser - parse Id", "Wrong Id");
+	} catch (SQLException e) {
+		log.Log("GetUser", "SQL error");
 	}
-	return out_name;
+	return customer;
 }
 
 String md5(String pwd){

@@ -12,7 +12,7 @@
 <title>Customers</title>
 </head>
 <body>
-
+<jsp:include page="/jsp/header.jsp" /><br>
 <b> Customers example for epood . demonstrate DAO</b><br>
 <b><a href="index.jsp">back</a></b><br/><hr>
 Customers list: <br>
@@ -28,7 +28,7 @@ Customers list: <br>
 
   try {
       for (int n = 0; n < customerList.size()  ; n++) {    
-    	  customer_kood = Integer.toString(customerList.get(n).getCustomer());
+    	  customer_kood = Integer.toString(customerList.get(n).getCustomerId());
     	  first_name = customerList.get(n).getFirstName();
     	  last_name = customerList.get(n).getLastName();
           out.println("<TR BGCOLOR='#FFFFFF' ><TD  nowrap>");

@@ -27,7 +27,7 @@ Customers list: <br>
 
   try {
       for (int n = 0; n < customerList.size()  ; n++) {    
-    	  customer_kood = Integer.toString(customerList.get(n).getCustomer());
+    	  customer_kood = Integer.toString(customerList.get(n).getCustomerId());
     	  first_name = customerList.get(n).getFirstName();
     	  last_name = customerList.get(n).getLastName();
           out.println("<TR BGCOLOR='#FFFFFF' ><TD  nowrap>");

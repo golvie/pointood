@@ -22,14 +22,14 @@ public class Customer {
 	/**
 	 * @return the customer
 	 */
-	public int getCustomer() {
+	public int getCustomerId() {
 		return customer;
 	}
 
 	/**
 	 * @param customer the customer to set
 	 */
-	public void setCustomer(int customer) {
+	public void setCustomerId(int customer) {
 		this.customer = customer;
 	}
 

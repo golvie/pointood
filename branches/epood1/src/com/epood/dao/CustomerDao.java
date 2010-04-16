@@ -32,7 +32,7 @@ public class CustomerDao {
 			
 			while(CustomerAmount.next()){
 				Current_Customer = new Customer();
-				Current_Customer.setCustomer(CustomerAmount.getInt("customer"));
+				Current_Customer.setCustomerId(CustomerAmount.getInt("customer"));
 				Current_Customer.setFirstName(CustomerAmount.getString("first_name"));
 				Current_Customer.setLastName(CustomerAmount.getString("last_name"));
 				//System.out.println("Current customer: "+Current_Customer.getCustomer()+", name: "+
@@ -50,7 +50,7 @@ public class CustomerDao {
     public Customer getCustomerFromDB(int customer_id){
 		
     	for(Customer c : getCustomersFromDB()){
-    		if(c.getCustomer()==customer_id)
+    		if(c.getCustomerId()==customer_id)
     			Current_Customer = c;
     	}    	
     	return Current_Customer;
@@ -65,7 +65,7 @@ public class CustomerDao {
 			
 			String sql = "update customer set first_name='"+updatedCustomer.getFirstName()
 			+"', last_name='"+updatedCustomer.getLastName()
-			+"' where customer="+Integer.toString(updatedCustomer.getCustomer());
+			+"' where customer="+Integer.toString(updatedCustomer.getCustomerId());
 			//System.out.println(sql);
 			this.st.executeUpdate(sql);
 			this.db.close();

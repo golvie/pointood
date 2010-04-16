@@ -57,7 +57,7 @@ if (request.getParameter("mida_teha") != null) {
 out.println("<table bgcolor='#000000' border=0 cellpadding=0 cellspacing=0><tr><td><table width=100% border=0 cellpadding=2 cellspacing=1>");
             
       if ((myCustomer = CustomerDAO.getCustomerFromDB(customer)) != null){  
-    	  customer_code = myCustomer.getCustomer() ;
+    	  customer_code = myCustomer.getCustomerId() ;
     	  first_name = myCustomer.getFirstName();
     	  last_name = myCustomer.getLastName();                   
 		  out.println("<TR BGCOLOR='#ffffff'><TD BGCOLOR='#cccccc' nowrap>kood</td><td>&nbsp;" + customer_code + "&nbsp;</TD></tr>");

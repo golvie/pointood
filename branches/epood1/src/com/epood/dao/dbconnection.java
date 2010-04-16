@@ -24,6 +24,7 @@ public class dbconnection {
 		    this.url = bundle.getString("url");
 		    this.usr = bundle.getString("usr");
 		    this.pwd = bundle.getString("pwd");
+		    //this.db_connection = DriverManager.getConnection(this.url, this.usr, this.pwd);
 		    this.db_connection = DriverManager.getConnection(this.url, this.usr, this.pwd);
 		} catch(Exception e) {
 			System.out.println("dbconnection.dbconnection():" + e.getMessage());
