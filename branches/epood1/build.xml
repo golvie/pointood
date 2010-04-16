@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<project name="epood" default="clean" basedir=".">
+
+<echo message="pulling in property files"/>
+<property file="build.properties"/>
+	
+<echo message="calling the web services generation ant task: build.xml"/>
+	
+	<target name="clean">
+		<delete dir="${build.dir}" />
+	</target>
+
+	<target name="compile">
+	    <mkdir dir="${classes.build.dir}" />
+	    <javac srcdir="${src.dir}" destdir="${classes.build.dir}" debug="true">
+	      <classpath path="${lib.dir}">
+	        <fileset dir="${lib.dir}">
+	          <include name="*.jar" />
+	        </fileset>
+	      </classpath>
+    	</javac>
+	</target>
+	
+	<target name="build" depends="clean, compile">
+	    
+		<copy todir="${build.dir}">
+	      <fileset dir="${web.dir}">
+	        <include name="**/*.jsp" />
+	      </fileset>
+	    </copy>	
+	
+		<copy todir="${build.dir}">
+		      <fileset dir="${web.dir}">
+		        <exclude name="jsp/" />
+		      </fileset>
+		</copy>
+
+		<copy todir="${webinf.build.dir}" file="${config.dir}/web.xml" />
+		 
+		<copy todir="${classes.build.dir}">
+		      <fileset dir="${config.dir}">
+		        <include name="*" />
+		        <exclude name="web.xml" />
+		      </fileset>
+		 </copy>
+	</target>
+	
+	<target name="deploy" depends="build">
+		<delete dir="www" />
+		<mkdir dir="www" />
+		<copy todir="${deploy.dir}" overwrite="true">
+	      <fileset dir="${build.dir}" />
+	    </copy>
+	  	<!-- <delete dir="${build.dir}" /> -->
+	</target>
+	
+	<target name="war" depends="clean, compile, deploy">
+		<war destfile="epood1.war" webxml="${config.dir}/web.xml">
+			<fileset dir="${web.dir}"/>
+			<!--<zipfileset dir="${web.dir}/jsp" prefix="jsp"/>-->
+			<classes dir="${classes.build.dir}"/>
+			<lib dir="${lib.dir}"/>
+		</war>
+	</target>
+	
+</project>
