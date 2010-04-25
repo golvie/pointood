@@ -6,20 +6,20 @@ package ee.ood.planetsys.gui;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Graphics;
-import java.awt.Graphics2D;
+import java.awt.GridLayout;
 import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import javax.swing.BoxLayout;
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 
-import ee.ood.planetsys.businesslogic.planetary.SpaceShip;
 import ee.ood.planetsys.businesslogic.planets_fascade.PSController;
 
 /**
@@ -32,13 +32,13 @@ public class Application extends JFrame {
 	
 	private JPanel buttonPanel;
 	private PSController controller;
-	//private ArrayList<Point> po_dict;
 	private final int planet_width = 3;
 	private final int zoom = 6;
 	private final int auto_speed = 100;
 	private boolean auto_on = false;
 	private final int cx = 400;
 	private final int cy = 350;
+	private String titleLable = "TimeLine: ";
 	
 	private JPanel drawPanel = new JPanel(){
 		@Override
@@ -48,30 +48,47 @@ public class Application extends JFrame {
 		}
 	};
 	
+	JButton bTick = new JButton("Tick");
+	JButton bAuto = new JButton("Auto");
+	JButton b100 = new JButton("Tick100");
+	JButton bDefault = new JButton("Solar System");
+	JButton bLaunch = new JButton("Launch");
+	JButton bLaunchOp = new JButton("Launch Operated Spaceship");
+	JButton bChangeDir = new JButton("Change direction");
+	JButton bChangeSpeed = new JButton("Change speed");
+	JButton bWait = new JButton("Wait");
+	JTextField dirField = new JTextField(5);
+	JTextField speedField = new JTextField(5);
+	JTextField waitField = new JTextField(5);
+	
 	public Application(String name) {
 		super(name);
 		
 		controller = new PSController();
-		//po_dict = new ArrayList<Point>();
 
 		this.createWidgets();
 		this.make_solar_system();
 	}
 	
+	
 	public void tick() {
 		this.controller.tick();
-		//this.move_planets();
 		repaint();
+		buttonPanel.setBorder(BorderFactory.createTitledBorder(titleLable + controller.getCounter()));
 	}
 	
 	public void tick100() {
 		this.controller.multi_tick(100);
-		//this.move_planets();
 		repaint();
+		buttonPanel.setBorder(BorderFactory.createTitledBorder(titleLable + controller.getCounter()));
 	}
 	
 	public void auto() {
 		this.auto_on = !this.auto_on;
+		if(auto_on)
+			bAuto.setText("Stop");
+		else
+			bAuto.setText("Auto");
 		this.autoTick();
 	}
 	
@@ -87,28 +104,52 @@ public class Application extends JFrame {
 			t.schedule(tt, auto_speed);
 		}
 	}
-		
+	
+	public void showError(String msg) {
+		JOptionPane.showMessageDialog(null, msg, "Exception", 
+				JOptionPane.ERROR_MESSAGE);
+	}
+	
 	private void make_solar_system() {
 		this.controller.make_solar_system();
 		this.delete_planets();
-		this.draw_planets(getGraphics());
 	}
 	
 	private void createWidgets() {
-		//drawPanel = new JPanel();
 		buttonPanel = new JPanel();		
 		drawPanel.setBackground(Color.black);
-		buttonPanel.setBackground(Color.gray);
-		buttonPanel.setLayout((new BoxLayout(buttonPanel, BoxLayout.Y_AXIS)));
+		buttonPanel.setLayout(new GridLayout (3,4));
+		buttonPanel.setBorder(BorderFactory.createTitledBorder(titleLable + controller.getCounter()));
 		this.setLayout(new BorderLayout());
 		this.setSize(cx*2, cy*2);
 		
-		JButton bTick = new JButton("Tick");
-		JButton bAuto = new JButton("Auto");
-		JButton b100 = new JButton("Tick100");
-		JButton bDefault = new JButton("Solar System");
-		JButton bLaunch = new JButton("Launch");
-		
+		bChangeDir.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					controller.operatedChangeDirection( Integer.valueOf(dirField.getText()) );
+				} catch (NumberFormatException ex) {
+					showError("cannot get value of direction");
+				}
+			}
+		});
+		bChangeSpeed.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					controller.operatedChangeSpeed( Integer.valueOf(speedField.getText()) );
+				} catch (NumberFormatException ex) {
+					showError("cannot get value of speed");
+				}
+			}
+		});
+		bWait.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					controller.operatedWait( Integer.valueOf(waitField.getText()) );
+				} catch (NumberFormatException ex) {
+					showError("cannot get value of waiting");
+				}
+			}
+		});
 		bTick.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				tick();
@@ -134,27 +175,30 @@ public class Application extends JFrame {
 				launch();
 			}
 		});
+		bLaunchOp.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				launchOperated();
+			}
+		});
+		
 		buttonPanel.add( bTick );
 		buttonPanel.add( b100 );
 		buttonPanel.add( bAuto );
 		buttonPanel.add( bDefault );
 		buttonPanel.add( bLaunch );
+		buttonPanel.add( bLaunchOp );
+		buttonPanel.add( bChangeDir );
+		buttonPanel.add( dirField );
+		buttonPanel.add( bChangeSpeed );
+		buttonPanel.add( speedField );
+		buttonPanel.add( bWait );
+		buttonPanel.add( waitField );
 		
 		this.getContentPane().add(BorderLayout.CENTER,drawPanel);
-		this.getContentPane().add(BorderLayout.EAST,buttonPanel);
+		this.getContentPane().add(BorderLayout.NORTH,buttonPanel);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setVisible(true);
 	}
-	
-	/*public void paint(Graphics g) {      
-		Graphics2D g2 = (Graphics2D) drawPanel.getGraphics();
-		drawPanel.paint(g2);	
-        g2.setColor(Color.yellow);
-        g2.fillOval(cx, cy, planet_width, planet_width);
-        g2.setColor(Color.white);
-		for(int i=0; i<po_dict.size(); i++)
-			g2.fillOval(po_dict.get(i).x, po_dict.get(i).y, planet_width, planet_width);
-	}*/
 	
 	public Point conv_coord(double x, double y) {
 		int x0 = (int) (this.cx + x * this.zoom);
@@ -165,40 +209,29 @@ public class Application extends JFrame {
 	public void draw_planets(final Graphics g) {
 		for(int id=0; id<this.controller.getPlanetarySystem().size(); id++)
 			draw_planet(id, g);
-		//super.paint(getGraphics());
 	}
 	
 	public void draw_planet(int planet_id, Graphics g) {
 		double x = controller.getPlanetarySystem().get(planet_id).x();
 		double y = controller.getPlanetarySystem().get(planet_id).y();
 		Point coord = this.conv_coord(x, y); 
-		//this.po_dict.add(planet_id, coord);
 		
 		g.setColor(Color.white);
 		g.fillOval(coord.x, coord.y, planet_width, planet_width);
 	}
 	
-	/*public void move_planets() {
-		for(int i=0; i < controller.getPlanetarySystem().size(); i++)
-			move_planet(i, controller.getPlanetarySystem().get(i).x(), controller.getPlanetarySystem().get(i).y());
-		//paint(getGraphics());
-	}
-	
-	public void move_planet(int planet_id, double x, double y) {
-		Point new_coord = this.conv_coord(x, y); 
-		this.po_dict.set(planet_id, new_coord);
-	}*/
 	
 	public void delete_planets() {
-		//po_dict.clear();
 		repaint();
+		buttonPanel.setBorder(BorderFactory.createTitledBorder(titleLable + controller.getCounter()));
 	}
 	
 	public void launch() {
-		SpaceShip ship = controller.launch(4, 0.5, 0.5);
-		int id = this.controller.getPlanetarySystem().size() - 1;
-		//draw_planet(id, getGraphics());
-		//paint(getGraphics());
+		controller.launch(4, 0.5, 0.5);
+	}
+	
+	public void launchOperated() {
+		controller.launchOperated(4, 0.5, 0.5);
 	}
 	
 	/*---------------------------------------

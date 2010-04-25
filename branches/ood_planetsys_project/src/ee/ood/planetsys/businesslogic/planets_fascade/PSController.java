@@ -18,9 +18,10 @@ public class PSController {
 	private PlanetarySystem<SpaceObject> sys;
 	private final static double T = 4;
 	private int last_operated_spaceship = 0;
-	
+	private int tick_counter = 0;
 	public void make_solar_system() {
 		
+		tick_counter = 0;
 		this.sys = new PlanetarySystem<SpaceObject>();
 		double[][] astro_data = { 
 				{87.97/365.26, 0.39},
@@ -43,8 +44,13 @@ public class PSController {
 		return this.sys;
 	}
 	
+	public int getCounter() {
+		return tick_counter;
+	}
+	
 	public void tick() {
 		getPlanetarySystem().tick();
+		tick_counter++;
 	}
 	
 	public void multi_tick(int N) {	
