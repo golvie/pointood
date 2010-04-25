@@ -15,8 +15,11 @@ import ee.ood.planetsys.businesslogic.planetary.OperatedSpaceShip;
 public class FlightPlan {
 
 	private OperatedSpaceShip ship;
-	public int paused_ticks = 0;
+	public int paused_ticks = 1;
 	
+	public FlightPlan(OperatedSpaceShip s) {
+		this.ship = s;
+	}
 	
 	public void waits(int ticks) {
 		paused_ticks = ticks;
@@ -38,7 +41,7 @@ public class FlightPlan {
 	}
 	
 	public void simpleMove() {
-		if (paused_ticks != 0)
+		if (paused_ticks != 1)
 			paused_ticks--;
 		else
 			ship.translate(ship.getDx(), ship.getDy());

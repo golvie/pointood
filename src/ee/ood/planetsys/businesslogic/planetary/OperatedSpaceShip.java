@@ -21,7 +21,7 @@ public class OperatedSpaceShip extends SpaceObject {
 	
 	public OperatedSpaceShip(double x, double y, double dx, double dy) {
 		super(x, y);
-		this.plan = new FlightPlan(); 
+		this.plan = new FlightPlan(this); 
 		this.invoker = new Invoker();
 		this.setDx(dx);
 		this.setDy(dy);
