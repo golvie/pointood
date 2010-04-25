@@ -3,48 +3,32 @@
  */
 package ee.ood.planetsys.businesslogic.flightplan;
 
-import ee.ood.planetsys.businesslogic.geom.Point;
-import ee.ood.planetsys.businesslogic.planetary.OperatedSpaceShip;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author Jaroslav Judin
  * Apr 24, 2010
  */
 
-//Receiver class.
+//Invoker class.
 public class FlightPlan {
 
-	private OperatedSpaceShip ship;
-	public int paused_ticks = 1;
+	List<Command> commands = new ArrayList<Command>();
 	
-	public FlightPlan(OperatedSpaceShip s) {
-		this.ship = s;
+	public void addCommand(Command c) {
+		commands.add(c);
 	}
 	
-	public void waits(int ticks) {
-		paused_ticks = ticks;
-		//ship.translate(ship.getDx(), ship.getDy());
+	public void popCommand() {
+		if (commands.size() > 0) {
+			commands.get(0).execute();
+			commands.remove(0);
+		}
 	}
 	
-	public void changeSpeed(double factor) {
-		ship.setDx(ship.getDx()*factor);
-		ship.setDy(ship.getDy()*factor);
-		ship.translate(ship.getDx(), ship.getDy());
-	}
-	
-	public void changeDirection(double angle) {
-		Point p = new Point(ship.getDx(), ship.getDy());
-		p.centre_rotate(angle);
-		ship.setDx(p.x());
-		ship.setDy(p.y());
-		ship.translate(ship.getDx(), ship.getDy());
-	}
-	
-	public void simpleMove() {
-		if (paused_ticks != 1)
-			paused_ticks--;
-		else
-			ship.translate(ship.getDx(), ship.getDy());
+	public int size() {
+		return commands.size();
 	}
 	
 }

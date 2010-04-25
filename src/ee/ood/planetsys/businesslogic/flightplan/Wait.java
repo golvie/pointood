@@ -3,23 +3,25 @@
  */
 package ee.ood.planetsys.businesslogic.flightplan;
 
+import ee.ood.planetsys.businesslogic.planetary.OperatedSpaceShip;
+
 /**
  * @author Jaroslav Judin
  * Apr 24, 2010
  */
 public class Wait implements Command {
 
-	private FlightPlan plan;
+	private OperatedSpaceShip ship;
 	private int ticks;
 	
-	public Wait(FlightPlan p, int t) {
-		this.plan = p;
+	public Wait(OperatedSpaceShip s, int t) {
+		this.ship = s;
 		this.ticks = t;
 	}
 
 	@Override
 	public void execute() {
-		plan.waits(ticks);
+		ship.waits(ticks);
 	}
 		
 }

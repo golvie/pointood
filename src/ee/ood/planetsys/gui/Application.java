@@ -126,7 +126,7 @@ public class Application extends JFrame {
 		bChangeDir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
-					controller.operatedChangeDirection( Integer.valueOf(dirField.getText()) );
+					controller.operatedChangeDirection( Double.valueOf(dirField.getText()) );
 				} catch (NumberFormatException ex) {
 					showError("cannot get value of direction");
 				}
@@ -135,7 +135,7 @@ public class Application extends JFrame {
 		bChangeSpeed.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
-					controller.operatedChangeSpeed( Integer.valueOf(speedField.getText()) );
+					controller.operatedChangeSpeed( Double.valueOf(speedField.getText()) );
 				} catch (NumberFormatException ex) {
 					showError("cannot get value of speed");
 				}
@@ -207,6 +207,8 @@ public class Application extends JFrame {
 	}
 	
 	public void draw_planets(final Graphics g) {
+		g.setColor(Color.yellow);
+		g.drawOval(cx, cy, planet_width, planet_width); // DRAW SUN
 		for(int id=0; id<this.controller.getPlanetarySystem().size(); id++)
 			draw_planet(id, g);
 	}
@@ -217,7 +219,7 @@ public class Application extends JFrame {
 		Point coord = this.conv_coord(x, y); 
 		
 		g.setColor(Color.white);
-		g.fillOval(coord.x, coord.y, planet_width, planet_width);
+		g.drawOval(coord.x, coord.y, planet_width, planet_width);
 	}
 	
 	

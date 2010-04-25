@@ -3,48 +3,57 @@
  */
 package ee.ood.planetsys.businesslogic.planetary;
 
-import ee.ood.planetsys.businesslogic.flightplan.ChangeDirection;
-import ee.ood.planetsys.businesslogic.flightplan.ChangeSpeed;
 import ee.ood.planetsys.businesslogic.flightplan.FlightPlan;
-import ee.ood.planetsys.businesslogic.flightplan.Invoker;
-import ee.ood.planetsys.businesslogic.flightplan.SimpleMove;
-import ee.ood.planetsys.businesslogic.flightplan.Wait;
+import ee.ood.planetsys.businesslogic.geom.Point;
 
 /**
  * @author Jaroslav Judin
  * Apr 24, 2010
  */
+//Receiver class.
 public class OperatedSpaceShip extends SpaceObject {
 
 	private FlightPlan plan;
-	private Invoker invoker;
+	private int paused_ticks = 1;
 	
 	public OperatedSpaceShip(double x, double y, double dx, double dy) {
 		super(x, y);
-		this.plan = new FlightPlan(this); 
-		this.invoker = new Invoker();
 		this.setDx(dx);
 		this.setDy(dy);
+		plan = new FlightPlan();
 	}
 
-	
 	@Override
 	public void tick() {
-		if (invoker.size() == 0)
-			invoker.addCommand( new SimpleMove(plan));
-		invoker.popCommand();
+		
+		if (paused_ticks != 1)
+			paused_ticks--;
+		else if (plan.size() == 0)
+			translate(getDx(), getDy());
+		else
+			plan.popCommand();
+		
 	}
 	
-	public void changeDirection(double angle) {
-		invoker.addCommand( new ChangeDirection(plan, angle));
+	public void waits(int ticks) {
+		paused_ticks = ticks;
 	}
 	
 	public void changeSpeed(double factor) {
-		invoker.addCommand( new ChangeSpeed(plan, factor));
+		setDx(getDx()*factor);
+		setDy(getDy()*factor);
+		translate(getDx(), getDy());
 	}
 	
-	public void waitTicks(int ticks) {
-		invoker.addCommand( new Wait(plan, ticks));
+	public void changeDirection(double angle) {
+		Point p = new Point(getDx(), getDy());
+		p.centre_rotate(angle);
+		setDx(p.x());
+		setDy(p.y());
+		translate(getDx(), getDy());
 	}
 	
+	public FlightPlan getPlan(){
+		return this.plan;
+	}
 }

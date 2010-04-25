@@ -3,6 +3,9 @@
  */
 package ee.ood.planetsys.businesslogic.planets_fascade;
 
+import ee.ood.planetsys.businesslogic.flightplan.ChangeDirection;
+import ee.ood.planetsys.businesslogic.flightplan.ChangeSpeed;
+import ee.ood.planetsys.businesslogic.flightplan.Wait;
 import ee.ood.planetsys.businesslogic.planetary.OperatedSpaceShip;
 import ee.ood.planetsys.businesslogic.planetary.Planet;
 import ee.ood.planetsys.businesslogic.planetary.PlanetarySystem;
@@ -81,18 +84,25 @@ public class PSController {
 	}
 	
 	public void operatedChangeSpeed(double factor) {
-		if (last_operated_spaceship > 0)
-			((OperatedSpaceShip) getPlanetarySystem().get(last_operated_spaceship)).changeSpeed(factor);
+		if (last_operated_spaceship > 0) {
+			OperatedSpaceShip ship = (OperatedSpaceShip) getPlanetarySystem().get(last_operated_spaceship);
+			ship.getPlan().addCommand(new ChangeSpeed(ship , factor));
+		}
 	}
 	
 	public void operatedChangeDirection(double angle) {
-		if (last_operated_spaceship > 0)
-			((OperatedSpaceShip) getPlanetarySystem().get(last_operated_spaceship)).changeDirection(angle);
+		if (last_operated_spaceship > 0) {
+			OperatedSpaceShip ship = (OperatedSpaceShip) getPlanetarySystem().get(last_operated_spaceship);
+			ship.getPlan().addCommand(new ChangeDirection(ship , angle));
+		}
 	}
 	
 	public void operatedWait(int ticks) {
-		if (last_operated_spaceship > 0)
-			((OperatedSpaceShip) getPlanetarySystem().get(last_operated_spaceship)).waitTicks(ticks);
+		if (last_operated_spaceship > 0) {
+			OperatedSpaceShip ship = (OperatedSpaceShip) getPlanetarySystem().get(last_operated_spaceship);
+			ship.getPlan().addCommand(new Wait(ship , ticks));
+		}
+			
 	}
 	
 }
