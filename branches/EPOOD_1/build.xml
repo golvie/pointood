@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<project name="EPOOD_1" default="clean" basedir=".">
+
+<echo message="pulling in property files"/>
+<property file="build.properties"/>
+	
+<echo message="calling the web services generation ant task: build.xml"/>
+	
+	<path id="lib.classpath">
+		   <pathelement location="${classes.build.dir}"/>
+		   <fileset dir="${lib.dir}" includes="*.jar"/>
+		   <fileset dir="${ant.home}/lib" includes="*.jar"/>
+		   <fileset dir="${tomcat.server.lib}" includes="*.jar"/>
+	</path>
+	
+	<target name="clean">
+		<delete dir="${build.dir}" />
+	</target>
+
+	<target name="compile">
+	    <mkdir dir="${classes.build.dir}" />
+	    <javac srcdir="${src.dir}" destdir="${classes.build.dir}" 
+	    	debug="true" classpathref="lib.classpath"/>
+	</target>
+	
+	<target name="build" depends="clean, compile">
+	    
+		<copy todir="${build.dir}">
+	      <fileset dir="${web.dir}">
+	        <include name="**/*.jsp" />
+	      </fileset>
+	    </copy>	
+	
+		<copy todir="${build.dir}">
+		      <fileset dir="${web.dir}">
+		        <exclude name="jsp/" />
+		      </fileset>
+		</copy>
+
+		<copy todir="${webinf.build.dir}" file="${config.dir}/web.xml" />
+
+		<copy todir="${webinf.build.dir}/lib">
+		         <fileset dir="${lib.dir}" includes="**/*.jar" />
+		</copy>
+		
+		<copy todir="${classes.build.dir}">
+		      <fileset dir="${config.dir}">
+		        <include name="*" />
+		        <exclude name="web.xml" />
+		      </fileset>
+		 </copy>
+	</target>
+	
+	<target name="deploy" depends="build">
+		<!-- <delete dir="www" /> -->
+		<!-- <mkdir dir="www" /> -->
+		<copy todir="${deploy.dir}" overwrite="true">
+	      <fileset dir="${build.dir}" />
+	    </copy>
+	  	<!-- <delete dir="${build.dir}" /> -->
+	</target>
+	
+	<target name="TestOrder" depends="deploy">	
+	<junit failureProperty="test.failure" printsummary="true" showoutput="yes">
+		<classpath refid="lib.classpath"/>
+		<formatter type="brief" usefile="false" />
+	  <test name="com.epood.tests.TestOrder" outfile="result">
+	      <formatter type="xml"/>
+	  </test>
+	</junit>
+	<!--<fail message="test failed" if="test.failure" />-->
+	</target>
+	
+	<target name="TestValidator" depends="deploy">	
+		<junit printsummary="true" showoutput="yes">
+			<classpath refid="lib.classpath"/>
+			<formatter type="brief" usefile="false" />
+		  	<test name="com.epood.tests.TestOrderBusinessValidator" outfile="result">
+		  		<formatter type="xml"/>
+		  	</test>
+		</junit>
+		</target>
+	
+	<target name="TestAll" depends="deploy">	
+	<junit printsummary="true" showoutput="yes">
+		<classpath refid="lib.classpath"/>
+		<formatter type="brief" usefile="false" />
+	    <test name="com.epood.tests.AllTests" outfile="result">
+	  </test>
+	</junit>
+	</target>
+	
+	<target name="war" depends="clean, compile, deploy">
+		<war destfile="${name}.war" webxml="${config.dir}/web.xml">
+			<fileset dir="${web.dir}"/>
+			<classes dir="${classes.build.dir}"/>
+			<lib dir="${lib.dir}"/>
+		</war>
+	</target>
+	
+	<target name="backup-lib">
+
+	      <mkdir dir="${build.dir}/${name}" />
+
+	      <copy todir="${build.dir}/${name}">
+	        <fileset dir="." includes="${src.dir}/**" />
+	      	<fileset dir="." includes="${lib.dir}/**" />
+	      	<fileset dir="." includes=".settings/**" />
+	        <fileset dir="." includes="web.xml" />
+	      	<fileset dir="." includes="build.xml" />
+	      	<fileset dir="." includes="build.properties" />
+	      	<fileset dir="." includes=".classpath" />
+	      	<fileset dir="." includes=".project" />
+	      </copy>
+
+	    
+	      <zip zipfile="${backup.lib.name}.zip"
+	           basedir="${build.dir}"
+	           includes="${name}/**" />
+
+	      <delete dir="${build.dir}/${name}" />
+	</target>
+	
+	<target name="backup">
+
+	      <mkdir dir="${build.dir}/${name}" />
+
+	      <copy todir="${build.dir}/${name}">
+	        <fileset dir="." includes="${src.dir}/**" />
+	      	<fileset dir="." includes=".settings/**" />
+	        <fileset dir="." includes="web.xml" />
+	      	<fileset dir="." includes="build.xml" />
+	      	<fileset dir="." includes="build.properties" />
+	      	<fileset dir="." includes=".classpath" />
+	      	<fileset dir="." includes=".project" />
+	      </copy>
+
+	    
+	      <zip zipfile="${backup.name}.zip"
+	           basedir="${build.dir}"
+	           includes="${name}/**" />
+
+	      <delete dir="${build.dir}/${name}" />
+	 </target>
+
+	<target name="war-backup-delete">
+	    <!--  <delete dir="${src_all.dir}" /> -->
+	     <delete file="${backup.lib.name}.zip"/>
+		 <delete file="${backup.name}.zip"/>
+		 <delete file="$name}.war"/>
+	</target>
+	
+</project>
