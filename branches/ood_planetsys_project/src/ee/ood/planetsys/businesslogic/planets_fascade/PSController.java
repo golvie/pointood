@@ -62,6 +62,10 @@ public class PSController {
 			tick();
 	}
 	
+	public SpaceObject getLastSpaceObject() {
+		return getPlanetarySystem().get(getPlanetarySystem().size()-1);
+	} 
+	
 	public SpaceShip launch(int planet_id , double dx, double dy) {
 		if(getPlanetarySystem().size() >= planet_id && planet_id > -1) {	
 			Planet pl = (Planet) getPlanetarySystem().get(planet_id);
