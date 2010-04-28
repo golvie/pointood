@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuite errors="0" failures="0" hostname="J-PC" name="com.epood.tests.TestOrderBusinessValidator" tests="1" time="0.06" timestamp="2010-04-28T10:21:11">
+  <properties>
+    <property name="java.vendor" value="Sun Microsystems Inc." />
+    <property name="webinf.build.dir" value="build/WEB-INF" />
+    <property name="lib.dir" value="lib" />
+    <property name="sun.java.launcher" value="SUN_STANDARD" />
+    <property name="eclipse.pdebuild.templates" value="/C:/web/idu0080/eclipse/plugins/org.eclipse.pde.build_3.5.1.R35x_20090820/templates/" />
+    <property name="sun.management.compiler" value="HotSpot Client Compiler" />
+    <property name="lib.build.dir" value="build/WEB-INF/lib" />
+    <property name="os.name" value="Windows 7" />
+    <property name="sun.boot.class.path" value="C:\Program Files\Java\jre6\lib\resources.jar;C:\Program Files\Java\jre6\lib\rt.jar;C:\Program Files\Java\jre6\lib\sunrsasign.jar;C:\Program Files\Java\jre6\lib\jsse.jar;C:\Program Files\Java\jre6\lib\jce.jar;C:\Program Files\Java\jre6\lib\charsets.jar;C:\Program Files\Java\jre6\classes" />
+    <property name="sun.desktop" value="windows" />
+    <property name="java.vm.specification.vendor" value="Sun Microsystems Inc." />
+    <property name="ant.home" value="C:\web\idu0080\eclipse\plugins\org.apache.ant_1.7.1.v20090120-1145" />
+    <property name="java.runtime.version" value="1.6.0_18-b07" />
+    <property name="user.name" value="J" />
+    <property name="deploy.dir" value="C:/Program Files/Apache Software Foundation/Tomcat 6.0/webapps/EPOOD_1" />
+    <property name="build.dir" value="build" />
+    <property name="user.language" value="en" />
+    <property name="sun.boot.library.path" value="C:\Program Files\Java\jre6\bin" />
+    <property name="ant.project.name" value="EPOOD_1" />
+    <property name="java.version" value="1.6.0_18" />
+    <property name="backup.lib.name" value="EPOOD_1-backup.lib" />
+    <property name="user.timezone" value="" />
+    <property name="tomcat.dir" value="C:/Program Files/Apache Software Foundation/Tomcat 6.0" />
+    <property name="config.build.dir" value="build/WEB-INF/properties" />
+    <property name="sun.arch.data.model" value="32" />
+    <property name="java.endorsed.dirs" value="C:\Program Files\Java\jre6\lib\endorsed" />
+    <property name="sun.cpu.isalist" value="pentium_pro+mmx pentium_pro pentium+mmx pentium i486 i386 i86" />
+    <property name="sun.jnu.encoding" value="Cp1257" />
+    <property name="file.encoding.pkg" value="sun.io" />
+    <property name="file.separator" value="\" />
+    <property name="java.specification.name" value="Java Platform API Specification" />
+    <property name="classes.build.dir" value="build/WEB-INF/classes" />
+    <property name="java.class.version" value="50.0" />
+    <property name="tomcat.server.lib" value="C:/Program Files/Apache Software Foundation/Tomcat 6.0/lib" />
+    <property name="user.country" value="US" />
+    <property name="java.home" value="C:\Program Files\Java\jre6" />
+    <property name="java.vm.info" value="mixed mode, sharing" />
+    <property name="ant.file" value="C:\Users\J\workspace\EPOOD_1\build.xml" />
+    <property name="os.version" value="6.1" />
+    <property name="path.separator" value=";" />
+    <property name="java.vm.version" value="16.0-b13" />
+    <property name="user.variant" value="" />
+    <property name="web.dir" value="src/web" />
+    <property name="ant.library.dir" value="C:\web\idu0080\eclipse\plugins\org.apache.ant_1.7.1.v20090120-1145\lib" />
+    <property name="java.awt.printerjob" value="sun.awt.windows.WPrinterJob" />
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle" />
+    <property name="awt.toolkit" value="sun.awt.windows.WToolkit" />
+    <property name="eclipse.pdebuild.scripts" value="/C:/web/idu0080/eclipse/plugins/org.eclipse.pde.build_3.5.1.R35x_20090820/scripts/" />
+    <property name="user.home" value="C:\Users\J" />
+    <property name="java.specification.vendor" value="Sun Microsystems Inc." />
+    <property name="java.library.path" value="C:\web\idu0080\eclipse;.;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;C:/Program Files/Java/jre6/bin/client;C:/Program Files/Java/jre6/bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\Java\jdk1.6.0_18\bin;C:\Program Files\Rational\common;C:\Program Files\TortoiseSVN\bin;C:\ant\apache-ant-1.8.0RC1\bin;C:\Program Files\QuickTime\QTSystem\;C:\Program Files\Samsung\Samsung PC Studio 3\;C:\web\idu0080\eclipse\configuration\org.eclipse.osgi\bundles\534\1\.cp" />
+    <property name="name" value="EPOOD_1" />
+    <property name="java.vendor.url" value="http://java.sun.com/" />
+    <property name="java.vm.vendor" value="Sun Microsystems Inc." />
+    <property name="java.runtime.name" value="Java(TM) SE Runtime Environment" />
+    <property name="java.class.path" value="C:\web\idu0080\eclipse\plugins\org.apache.ant_1.7.1.v20090120-1145\lib\ant.jar;C:\web\idu0080\eclipse\plugins\org.apache.ant_1.7.1.v20090120-1145\lib\ant-antlr.jar;C:\web\idu0080\eclipse\plugins\org.apache.ant_1.7.1.v20090120-1145\lib\ant-apache-bcel.jar;C:\web\idu0080\eclipse\plugins\org.apache.ant_1.7.1.v20090120-1145\lib\ant-apache-bsf.jar;C:\web\idu0080\eclipse\plugins\org.apache.ant_1.7.1.v20090120-1145\lib\ant-apache-log4j.jar;C:\web\idu0080\eclipse\plugins\org.apache.ant_1.7.1.v20090120-1145\lib\ant-apache-oro.jar;C:\web\idu0080\eclipse\plugins\org.apache.ant_1.7.1.v20090120-1145\lib\ant-apache-regexp.jar;C:\web\idu0080\eclipse\plugins\org.apache.ant_1.7.1.v20090120-1145\lib\ant-apache-resolver.jar;C:\web\idu0080\eclipse\plugins\org.apache.ant_1.7.1.v20090120-1145\lib\ant-commons-logging.jar;C:\web\idu0080\eclipse\plugins\org.apache.ant_1.7.1.v20090120-1145\lib\ant-commons-net.jar;C:\web\idu0080\eclipse\plugins\org.apache.ant_1.7.1.v20090120-1145\lib\ant-jai.jar;C:\web\idu0080\eclipse\plugins\org.apache.ant_1.7.1.v20090120-1145\lib\ant-javamail.jar;C:\web\idu0080\eclipse\plugins\org.apache.ant_1.7.1.v20090120-1145\lib\ant-jdepend.jar;C:\web\idu0080\eclipse\plugins\org.apache.ant_1.7.1.v20090120-1145\lib\ant-jmf.jar;C:\web\idu0080\eclipse\plugins\org.apache.ant_1.7.1.v20090120-1145\lib\ant-jsch.jar;C:\web\idu0080\eclipse\plugins\org.apache.ant_1.7.1.v20090120-1145\lib\ant-junit.jar;C:\web\idu0080\eclipse\plugins\org.apache.ant_1.7.1.v20090120-1145\lib\ant-launcher.jar;C:\web\idu0080\eclipse\plugins\org.apache.ant_1.7.1.v20090120-1145\lib\ant-netrexx.jar;C:\web\idu0080\eclipse\plugins\org.apache.ant_1.7.1.v20090120-1145\lib\ant-nodeps.jar;C:\web\idu0080\eclipse\plugins\org.apache.ant_1.7.1.v20090120-1145\lib\ant-starteam.jar;C:\web\idu0080\eclipse\plugins\org.apache.ant_1.7.1.v20090120-1145\lib\ant-stylebook.jar;C:\web\idu0080\eclipse\plugins\org.apache.ant_1.7.1.v20090120-1145\lib\ant-swing.jar;C:\web\idu0080\eclipse\plugins\org.apache.ant_1.7.1.v20090120-1145\lib\ant-trax.jar;C:\web\idu0080\eclipse\plugins\org.apache.ant_1.7.1.v20090120-1145\lib\ant-weblogic.jar;C:\web\idu0080\eclipse\configuration\org.eclipse.osgi\bundles\47\1\.cp\lib\remoteAnt.jar;C:\Program Files\Java\jdk1.6.0_18\lib\tools.jar;C:\web\idu0080\apache-ant-1.8.0RC1\lib\junit-4.8.2.jar;C:\web\idu0080\eclipse\plugins\org.eclipse.swt.win32.win32.x86_3.5.1.v3555a.jar" />
+    <property name="ant.version" value="Apache Ant version 1.7.1 compiled on June 27 2008" />
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification" />
+    <property name="java.vm.specification.version" value="1.0" />
+    <property name="servletapi.jar" value="servlet-api*.jar" />
+    <property name="sun.cpu.endian" value="little" />
+    <property name="sun.os.patch.level" value="" />
+    <property name="eclipse.pdebuild.home" value="/C:/web/idu0080/eclipse/plugins/org.eclipse.pde.build_3.5.1.R35x_20090820/./" />
+    <property name="java.io.tmpdir" value="C:\Users\J\AppData\Local\Temp\" />
+    <property name="java.vendor.url.bug" value="http://java.sun.com/cgi-bin/bugreport.cgi" />
+    <property name="os.arch" value="x86" />
+    <property name="java.awt.graphicsenv" value="sun.awt.Win32GraphicsEnvironment" />
+    <property name="java.ext.dirs" value="C:\Program Files\Java\jre6\lib\ext;C:\Windows\Sun\Java\lib\ext" />
+    <property name="user.dir" value="C:\Users\J\workspace\EPOOD_1" />
+    <property name="line.separator" value="
+" />
+    <property name="java.vm.name" value="Java HotSpot(TM) Client VM" />
+    <property name="backup.name" value="EPOOD_1-backup" />
+    <property name="basedir" value="C:\Users\J\workspace\EPOOD_1" />
+    <property name="ant.java.version" value="1.6" />
+    <property name="config.dir" value="src/config" />
+    <property name="ant.file.EPOOD_1" value="C:\Users\J\workspace\EPOOD_1\build.xml" />
+    <property name="ant.core.lib" value="C:\web\idu0080\eclipse\plugins\org.apache.ant_1.7.1.v20090120-1145\lib\ant.jar" />
+    <property name="file.encoding" value="UTF-8" />
+    <property name="java.specification.version" value="1.6" />
+    <property name="src.dir" value="src" />
+  </properties>
+  <testcase classname="com.epood.tests.TestOrderBusinessValidator" name="testCheckPriceLimit" time="0.013" />
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
