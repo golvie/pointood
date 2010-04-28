@@ -14,7 +14,7 @@ import ee.ood.planetsys.businesslogic.geom.Point;
 public class OperatedSpaceShip extends SpaceObject {
 
 	private FlightPlan plan;
-	private int paused_ticks = 1;
+	private int paused_ticks = 0;
 	
 	public OperatedSpaceShip(double x, double y, double dx, double dy) {
 		super(x, y);
@@ -26,7 +26,7 @@ public class OperatedSpaceShip extends SpaceObject {
 	@Override
 	public void tick() {
 		
-		if (paused_ticks != 1)
+		if (paused_ticks != 0)
 			paused_ticks--;
 		else if (plan.size() == 0)
 			translate(getDx(), getDy());
@@ -36,7 +36,7 @@ public class OperatedSpaceShip extends SpaceObject {
 	}
 	
 	public void waits(int ticks) {
-		paused_ticks = ticks;
+		paused_ticks = ticks-1;
 	}
 	
 	public void changeSpeed(double factor) {

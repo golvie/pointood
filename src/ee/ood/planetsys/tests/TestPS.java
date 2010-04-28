@@ -3,6 +3,7 @@
  */
 package ee.ood.planetsys.tests;
 
+import ee.ood.planetsys.businesslogic.planetary.OperatedSpaceShip;
 import ee.ood.planetsys.businesslogic.planetary.Planet;
 import ee.ood.planetsys.businesslogic.planetary.PlanetarySystem;
 import ee.ood.planetsys.businesslogic.planetary.SpaceObject;
@@ -32,6 +33,7 @@ public class TestPS extends TestCase {
         
         ps.add(new SpaceShip(5, 5, 2, 3));
         ps.add(new SpaceShip(10, 0, 0.1, 0.1));
+        ps.add(new OperatedSpaceShip(5, 5, 2, 2));
 	}
 	
 	protected void tearDown() throws Exception {

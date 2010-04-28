@@ -240,6 +240,6 @@ public class Application extends JFrame {
 	 * --------------MAIN--------------------
 	 * -------------------------------------*/
 	public static void main(String[] args) {
-		new Application("Planets System");	
+		new Application("Planetary System");	
 	}
 }
