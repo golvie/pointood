@@ -25,6 +25,7 @@ public class PSController {
 	public void make_solar_system() {
 		
 		tick_counter = 0;
+		last_operated_spaceship = 0;
 		this.sys = new PlanetarySystem<SpaceObject>();
 		double[][] astro_data = { 
 				{87.97/365.26, 0.39},

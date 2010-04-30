@@ -57,9 +57,9 @@ public class Application extends JFrame {
 	JButton bChangeDir = new JButton("Change direction");
 	JButton bChangeSpeed = new JButton("Change speed");
 	JButton bWait = new JButton("Wait");
-	JTextField dirField = new JTextField(5);
-	JTextField speedField = new JTextField(5);
-	JTextField waitField = new JTextField(5);
+	JTextField dirField = new JTextField("changed_angle",5);
+	JTextField speedField = new JTextField("speed_factor",5);
+	JTextField waitField = new JTextField("waited_ticks",5);
 	
 	public Application(String name) {
 		super(name);
