@@ -1,0 +1,79 @@
+11:53:47 ERROR [Server] - Cannot create server now ... maybe port 8090 is used.
+11:53:56 INFO  [Server] - Server started...
+11:53:56 INFO  [Server] - server try to accept new client..
+11:53:58 INFO  [Server] - server try to accept new client..
+11:54:05 INFO  [Server] - Server get new msg from PLAYER_1: setPlayerNamefirst
+11:54:05 INFO  [Server] - PLAYER_1 => first
+11:54:08 INFO  [Server] - server try to accept new client..
+11:54:13 INFO  [Server] - Server get new msg from PLAYER_2: setPlayerNamesecond
+11:54:13 INFO  [Server] - PLAYER_2 => second
+11:54:16 INFO  [Server] - server try to accept new client..
+11:54:19 INFO  [Server] - Server get new msg from Spectator: setPlayerNamexxxxx
+11:54:19 INFO  [Server] - Spectator => xxxxx
+11:54:21 INFO  [Server] - Server get new msg from second: Scissors
+11:54:21 INFO  [Server] - first must be first
+11:54:22 INFO  [Server] - Server get new msg from second: Paper
+11:54:22 INFO  [Server] - first must be first
+11:54:22 INFO  [Server] - Server get new msg from second: Scissors
+11:54:22 INFO  [Server] - first must be first
+11:54:23 INFO  [Server] - Server get new msg from xxxxx: Paper
+11:54:23 INFO  [Server] - Server get new msg from xxxxx: Scissors
+11:54:25 INFO  [Server] - Server get new msg from first: Rock
+11:54:25 INFO  [Server] - first go Rock
+11:54:25 INFO  [Server] - second to play
+11:54:25 INFO  [Server] - first waits... 
+11:54:31 INFO  [Server] - Server get new msg from second: Rock
+11:54:31 INFO  [Server] - second go Rock
+11:54:31 INFO  [Server] - TIE GAME Result [first 0:0 second]
+11:54:31 INFO  [Server] - second waits... 
+11:54:31 INFO  [Server] - first stops waiting
+11:54:33 INFO  [Server] - Server get new msg from first: Paper
+11:54:33 INFO  [Server] - first go Paper
+11:54:33 INFO  [Server] - second to play
+11:54:33 INFO  [Server] - first waits... 
+11:54:33 INFO  [Server] - second stops waiting
+11:54:38 INFO  [Server] - Server get new msg from second: Rock
+11:54:38 INFO  [Server] - second go Rock
+11:54:38 INFO  [Server] - first WINS Result [first 1:0 second]
+11:54:38 INFO  [Server] - second waits... 
+11:54:38 INFO  [Server] - first stops waiting
+11:54:43 INFO  [Server] - Server get new msg from first: Scissors
+11:54:43 INFO  [Server] - first go Scissors
+11:54:43 INFO  [Server] - second to play
+11:54:43 INFO  [Server] - first waits... 
+11:54:43 INFO  [Server] - second stops waiting
+11:54:45 INFO  [Server] - Server get new msg from second: Rock
+11:54:45 INFO  [Server] - second go Rock
+11:54:45 INFO  [Server] - TIE GAME Result [first 1:1 second]
+11:54:45 INFO  [Server] - second waits... 
+11:54:45 INFO  [Server] - first stops waiting
+11:54:51 INFO  [Server] - Server get new msg from xxxxx: Scissors
+11:54:56 INFO  [Server] - Server get new msg from first: Rock
+11:54:56 INFO  [Server] - first go Rock
+11:54:56 INFO  [Server] - second to play
+11:54:56 INFO  [Server] - first waits... 
+11:54:56 INFO  [Server] - second stops waiting
+11:54:58 INFO  [Server] - Server get new msg from second: Paper
+11:54:58 INFO  [Server] - second go Paper
+11:54:58 INFO  [Server] - second WINS Result [first 1:2 second]
+11:54:58 INFO  [Server] - second waits... 
+11:54:58 INFO  [Server] - first stops waiting
+11:54:58 INFO  [Server] - second stops waiting
+11:55:02 INFO  [Server] - Server get new msg from second: Scissors
+11:55:03 INFO  [Server] - Server get new msg from second: Paper
+11:55:04 INFO  [Server] - Server get new msg from second: Rock
+11:55:04 INFO  [Server] - Server get new msg from second: new game
+11:55:06 INFO  [Server] - Server get new msg from first: Scissors
+11:55:06 INFO  [Server] - first go Scissors
+11:55:06 INFO  [Server] - second to play
+11:55:06 INFO  [Server] - first waits... 
+11:55:07 INFO  [Server] - Server get new msg from second: Paper
+11:55:07 INFO  [Server] - second go Paper
+11:55:07 INFO  [Server] - first WINS Result [first 1:0 second]
+11:55:07 INFO  [Server] - second waits... 
+11:55:07 INFO  [Server] - first stops waiting
+11:55:09 INFO  [Server] - Server get new msg from xxxxx: Scissors
+11:55:10 INFO  [Server] - server - good bye my clients
+11:55:10 INFO  [Server] - server - good bye my clients
+11:55:10 INFO  [Server] - second stops waiting
+11:55:10 INFO  [Server] - server - good bye my clients
