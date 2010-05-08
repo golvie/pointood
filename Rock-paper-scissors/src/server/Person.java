@@ -95,20 +95,26 @@ public class Person extends Thread {
 						 this.sendMessage(response);
 					 } else if(msg.length()>12) { 
 						 if (msg.substring(0,13).equals("setPlayerName")) {
-							 
-							 if (this.getName().equals("PLAYER_1")) {
-								 PLAYER_NAME[1]=msg.substring(13);
-								
+							 if (validateName(msg.substring(13))) {
+								 Server.log.info(this.getName()+" => must choose other name");
+								 response.setName(getName());
+								 response.setMessage("isRepeatName");
 							 }
-							 if (this.getName().equals("PLAYER_2")) {
-								 PLAYER_NAME[2]=msg.substring(13);
-								
+							 else {
+								 if (this.getName().equals("PLAYER_1")) {
+									 PLAYER_NAME[1]=msg.substring(13);
+									
+								 }
+								 if (this.getName().equals("PLAYER_2")) {
+									 PLAYER_NAME[2]=msg.substring(13);
+									
+								 }
+								 Server.log.info(this.getName()+" => "+msg.substring(13));
+								 this.setName(msg.substring(13));
+								 response.setName(getName());
+								 response.setMessage("NameIsSetted");
+								 response.setType(type);
 							 }
-							 Server.log.info(this.getName()+" => "+msg.substring(13));
-							 this.setName(msg.substring(13));
-							 response.setName(getName());
-							 response.setMessage("NameIsSetted");
-							 response.setType(type);
 							 messages.addMessage( response );
 						 }
 					 } else if (type != Server.SPECTATOR && !gameLogic_.isEnded()) {
@@ -183,6 +189,14 @@ public class Person extends Thread {
 		for (Person p : players)
 			names += p.getName()+", ";
 		return names;
+	}
+	
+	private boolean validateName(String name) {
+		for (Person p : players) {
+			 if (p.getName().equals(name))
+				 return true;
+		 }
+		return false;
 	}
 	
 	private String checkStatus(int status) {
