@@ -11,7 +11,8 @@ import java.io.ObjectOutputStream;
 import java.net.Socket;
 import java.util.ArrayList;
 
-import common.logic.Logic;
+import server.logic.Logic;
+
 import common.messages.Message;
 import common.messages.MsgObject;
 
@@ -86,7 +87,6 @@ public class Person extends Thread {
 							 stop.reset(); 
 							 stop.notifyAll(); // wake up All players
 						 }
-						 response.setLogic(this.gameLogic_);
 						 messages.addMessage( response );
 					 } else if (msg.equals("Get all players names!")) {
 						 Server.log.info(this.getName()+" would like to know all players names");
@@ -95,20 +95,20 @@ public class Person extends Thread {
 						 this.sendMessage(response);
 					 } else if(msg.length()>12) { 
 						 if (msg.substring(0,13).equals("setPlayerName")) {
-							 String color = "";
+							 
 							 if (this.getName().equals("PLAYER_1")) {
 								 PLAYER_NAME[1]=msg.substring(13);
-								 color +=1;
+								
 							 }
 							 if (this.getName().equals("PLAYER_2")) {
 								 PLAYER_NAME[2]=msg.substring(13);
-								 color +=2;
+								
 							 }
 							 Server.log.info(this.getName()+" => "+msg.substring(13));
 							 this.setName(msg.substring(13));
 							 response.setName(getName());
 							 response.setMessage("NameIsSetted");
-							 response.setStatus(color);
+							 response.setType(type);
 							 messages.addMessage( response );
 						 }
 					 } else if (type != Server.SPECTATOR && !gameLogic_.isEnded()) {
@@ -117,7 +117,7 @@ public class Person extends Thread {
 							 Server.log.info( PLAYER_NAME[1]+" must be first");
 							 response.setMessage(PLAYER_NAME[1]+" must be first");
 							 messages.addMessage( response );
-							 continue;
+							 continue; // next loop
 						 }
 						 
 						 Server.log.info(this.getName()+" go " + msg);
@@ -125,14 +125,15 @@ public class Person extends Thread {
 						 String status = checkStatus(gameLogic_.getGameStatus());
 						 Server.log.info(status);
 						 
-						 if(gameLogic_.isEnded())
-							 status += " => GAME OVER";
-						 //if (!gameLogic_.roundComplited())
-							// status = "";
 						 response.setMessage(msg);
 						 response.setName(getName());
+						 if(gameLogic_.isEnded()) {
+							 status += " => GAME OVER";
+							 if (getName().equals(PLAYER_NAME[gameLogic_.getGameStatus()])) {
+								 response.setWin(true);
+							 }
+						 }
 						 response.setStatus(status);
-						 response.setLogic(gameLogic_);
 						 messages.addMessage( response );
 						 stop.changeState();
 						 try {

@@ -1,13 +1,15 @@
 /**
  * 
  */
-package common.logic;
+package server.logic;
+
+import java.io.Serializable;
 
 /**
  * @author 
  * Apr 12, 2010
  */
-public interface Logic {
+public interface Logic extends Serializable {
 	
 	public void move(String choice);
 	

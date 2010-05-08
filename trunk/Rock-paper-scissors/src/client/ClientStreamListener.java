@@ -26,7 +26,7 @@ public class ClientStreamListener extends Thread {
 		this.in = app.in;
 		this.start();
 	}
-	
+
 	public void run() {
 		
 		try {
@@ -36,7 +36,7 @@ public class ClientStreamListener extends Thread {
 				if(response instanceof MsgObject) {
 					MsgObject res = (MsgObject) response;
 					
-					if(((MsgObject) response).getMessage() != null) {
+					if (res.getMessage() != null) {
 						
 						String msg = res.getMessage();
 						String name = res.getName();
@@ -44,12 +44,36 @@ public class ClientStreamListener extends Thread {
 						String msgForClient = "";
 						if (name != null) msgForClient += (name+": ");
 						if (msg != null) msgForClient += (msg+" ");
-						if (status != null) msgForClient += (status);
-						app.statusField.setText(msgForClient);
+						if (status != null) {
+							msgForClient += (status);
+						
+							if (status.length()>10)
+								status = status.substring(status.length()-9, status.length());	
+							if (status.equals("GAME OVER") && app.type < 3) {
+									if (app.name.equals(name)) 
+										if (res.isWin())
+											msgForClient += "  You are winner!";
+										else
+											msgForClient += "  You are loser!";
+									else
+										if (!res.isWin())
+											msgForClient += "  You are winner!";
+										else
+											msgForClient += "  You are loser!";
+									//app.statusField.setText(msgForClient);
+									app.newGameButton.setVisible(true);
+									//ClientApplication.window.pack();
+							}
+						}
+						
+						app.statusField.setText(msgForClient); 
+						
 						if(msg.equals("new game")) {
 							app.buttonRock.setForeground(null);
 							app.buttonPaper.setForeground(null);
 							app.buttonScissors.setForeground(null);
+							app.newGameButton.setVisible(false);
+							ClientApplication.window.pack();
 						}  
 						else if (msg != null && name!=null)
 						if (app.name.equals(name)) { // only these player check chosen item
@@ -66,9 +90,10 @@ public class ClientStreamListener extends Thread {
 								app.buttonPaper.setForeground(null);
 								app.buttonScissors.setForeground(color);
 							} else if(msg.equals("NameIsSetted")) {
-								if (status.equals("1"))
+								app.type = res.getType();
+								if (app.type == 1)
 									color = Color.YELLOW;
-								else if (status.equals("2"))
+								else if (app.type == 2)
 									color = Color.RED;
 								app.setNameButton.setVisible(false);
 								app.setNameField.setEditable(false);
@@ -76,16 +101,7 @@ public class ClientStreamListener extends Thread {
 								ClientApplication.window.pack();
 							}
 						}
-						if (res.getLogic() != null ) {
-							if(res.getLogic().isEnded()) {
-								System.out.println(status.substring(0, status.length()-5));
-								if (app.name.equals(status.substring(0, status.length()-5))){
-									status = "You are winner!";
-								} else
-									status = "You are loser!";
-								//app.statusField.setText(name+": "+msg+" "+status);
-							}
-						}
+						
 					}
 					
 				} 
@@ -94,7 +110,12 @@ public class ClientStreamListener extends Thread {
 			System.out.println("listener:  Cannot connect with server ");
 			//e.printStackTrace();
 		} catch (ClassNotFoundException e) {
-		} finally {
+			System.out.println("message receiving was unsuccessful");
+		} catch (NullPointerException e) {
+			System.out.println("name initializing was unsuccessful");
+			e.printStackTrace();
+		}
+		finally {
 			try {
 				this.interrupt();
 			} catch (Throwable e) {
