@@ -16,18 +16,17 @@ import javax.swing.JTextField;
 import server.Server;
 
 
-//import server.Server;
 /**
  * 
- * @author 
- *
- * GUI - Client application class for Rock-Paper-Scissor
+ * GUI - Client application class for Rock-Paper-Scissor<br/>
  * 
- * firstly, user must set his name - board becomes visible
- * after that user can make his move and waits his opponent
- * user can also to view list of all participants names - players and spectators
+ * firstly, user must set his name - board becomes visible<br/>
+ * after that user can make his move and waits his opponent<br/>
+ * user can also to view list of all participants names - players and spectators<br/>
  * 
  * after the end of the game - user can choose new game option
+ * @author V&N
+ * @date May 8, 2010
  */
 @SuppressWarnings("serial")
 public class ClientApplication extends JPanel {

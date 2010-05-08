@@ -5,7 +5,11 @@ package common.messages;
 
 import java.util.ArrayList;
 
-
+/**
+ * Class which saves messages and after sending removes them
+ * @author V&N
+ * @date May 8, 2010
+ */
 
 public class Message {
 
