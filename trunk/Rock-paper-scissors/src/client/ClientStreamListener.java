@@ -100,6 +100,9 @@ public class ClientStreamListener extends Thread {
 								app.gamePanel.setVisible(true);
 								ClientApplication.window.pack();
 							}
+						} else if(msg.equals("isRepeatName")) {
+							System.out.println("This Name is in use! Choose other name!");
+							app.statusField.setText("This Name is in use! Choose other name!"); 
 						}
 						
 					}

@@ -1352,3 +1352,236 @@
 12:36:19 INFO  [Server] - server - good bye my clients
 12:36:19 INFO  [Server] - server - good bye my clients
 12:36:19 INFO  [Server] - server - good bye my clients
+12:43:23 INFO  [Server] - Server started...
+12:43:23 INFO  [Server] - server try to accept new client..
+12:43:26 INFO  [Server] - server try to accept new client..
+12:43:29 INFO  [Server] - Server get new msg from PLAYER_1: setPlayerNameqwe
+12:43:29 INFO  [Server] - PLAYER_1 => qwe
+12:43:33 INFO  [Server] - server try to accept new client..
+12:43:34 INFO  [Server] - Server get new msg from PLAYER_2: setPlayerNameqwe
+12:43:34 INFO  [Server] - PLAYER_2 => qwe
+12:43:34 INFO  [Server] - Server get new msg from qwe: setPlayerNameqwe
+12:43:34 INFO  [Server] - qwe => qwe
+12:43:41 INFO  [Server] - Server get new msg from qwe: Rock
+12:43:41 INFO  [Server] - qwe must be first
+12:43:42 INFO  [Server] - Server get new msg from qwe: Scissors
+12:43:42 INFO  [Server] - qwe must be first
+12:43:43 INFO  [Server] - Server get new msg from qwe: Scissors
+12:43:43 INFO  [Server] - qwe must be first
+12:43:43 INFO  [Server] - Server get new msg from qwe: Paper
+12:43:43 INFO  [Server] - qwe must be first
+12:43:44 INFO  [Server] - Server get new msg from qwe: Paper
+12:43:44 INFO  [Server] - qwe must be first
+12:43:45 INFO  [Server] - Server get new msg from qwe: Scissors
+12:43:45 INFO  [Server] - qwe must be first
+12:43:45 INFO  [Server] - Server get new msg from qwe: Scissors
+12:43:45 INFO  [Server] - qwe must be first
+12:43:45 INFO  [Server] - Server get new msg from qwe: Paper
+12:43:45 INFO  [Server] - qwe must be first
+12:43:46 INFO  [Server] - Server get new msg from qwe: Rock
+12:43:46 INFO  [Server] - qwe must be first
+12:43:46 INFO  [Server] - Server get new msg from qwe: Paper
+12:43:46 INFO  [Server] - qwe must be first
+12:43:46 INFO  [Server] - Server get new msg from qwe: Scissors
+12:43:46 INFO  [Server] - qwe must be first
+12:43:48 INFO  [Server] - server - good bye my clients
+12:43:48 INFO  [Server] - server - good bye my clients
+12:43:50 INFO  [Server] - server try to accept new client..
+12:43:52 INFO  [Server] - Server get new msg from PLAYER_1: setPlayerNameert
+12:43:52 INFO  [Server] - PLAYER_1 => ert
+12:43:52 INFO  [Server] - Server get new msg from ert: Get all players names!
+12:43:52 INFO  [Server] - ert would like to know all players names
+12:43:52 INFO  [Server] - Players list: ert, 
+12:43:55 INFO  [Server] - server try to accept new client..
+12:43:57 INFO  [Server] - Server get new msg from PLAYER_2: setPlayerNamefgh
+12:43:57 INFO  [Server] - PLAYER_2 => fgh
+12:44:00 INFO  [Server] - server try to accept new client..
+12:44:02 INFO  [Server] - Server get new msg from Spectator: setPlayerNamehjk
+12:44:02 INFO  [Server] - Spectator => hjk
+12:44:05 INFO  [Server] - Server get new msg from ert: Rock
+12:44:05 INFO  [Server] - ert go Rock
+12:44:05 INFO  [Server] - fgh to play
+12:44:05 INFO  [Server] - ert waits... 
+12:44:06 INFO  [Server] - Server get new msg from fgh: Scissors
+12:44:06 INFO  [Server] - fgh go Scissors
+12:44:06 INFO  [Server] - ert WINS Result [ert 1:0 fgh]
+12:44:06 INFO  [Server] - fgh waits... 
+12:44:06 INFO  [Server] - ert stops waiting
+12:44:08 INFO  [Server] - Server get new msg from ert: Paper
+12:44:08 INFO  [Server] - ert go Paper
+12:44:08 INFO  [Server] - fgh to play
+12:44:08 INFO  [Server] - ert waits... 
+12:44:08 INFO  [Server] - fgh stops waiting
+12:44:09 INFO  [Server] - Server get new msg from fgh: Rock
+12:44:09 INFO  [Server] - fgh go Rock
+12:44:09 INFO  [Server] - ert WINS Result [ert 2:0 fgh]
+12:44:09 INFO  [Server] - fgh waits... 
+12:44:09 INFO  [Server] - ert stops waiting
+12:44:11 INFO  [Server] - Server get new msg from ert: Scissors
+12:44:11 INFO  [Server] - ert go Scissors
+12:44:11 INFO  [Server] - fgh to play
+12:44:11 INFO  [Server] - ert waits... 
+12:44:11 INFO  [Server] - fgh stops waiting
+12:44:12 INFO  [Server] - Server get new msg from fgh: Scissors
+12:44:12 INFO  [Server] - fgh go Scissors
+12:44:12 INFO  [Server] - ert WINS Result [ert 2:0 fgh]
+12:44:12 INFO  [Server] - fgh waits... 
+12:44:12 INFO  [Server] - ert stops waiting
+12:44:12 INFO  [Server] - fgh stops waiting
+12:44:23 INFO  [Server] - Server get new msg from hjk: Get all players names!
+12:44:23 INFO  [Server] - hjk would like to know all players names
+12:44:23 INFO  [Server] - Players list: ert, fgh, hjk, 
+12:44:24 INFO  [Server] - Server get new msg from hjk: Get all players names!
+12:44:24 INFO  [Server] - hjk would like to know all players names
+12:44:24 INFO  [Server] - Players list: ert, fgh, hjk, 
+12:44:25 INFO  [Server] - Server get new msg from ert: new game
+12:44:37 INFO  [Server] - Server get new msg from fgh: Scissors
+12:44:37 INFO  [Server] - ert must be first
+12:44:38 INFO  [Server] - Server get new msg from fgh: Paper
+12:44:38 INFO  [Server] - ert must be first
+12:44:38 INFO  [Server] - Server get new msg from fgh: Rock
+12:44:38 INFO  [Server] - ert must be first
+12:44:39 INFO  [Server] - Server get new msg from hjk: Rock
+12:44:39 INFO  [Server] - Server get new msg from hjk: Paper
+12:44:39 INFO  [Server] - Server get new msg from hjk: Scissors
+12:44:40 INFO  [Server] - Server get new msg from ert: Scissors
+12:44:40 INFO  [Server] - ert go Scissors
+12:44:40 INFO  [Server] - fgh to play
+12:44:40 INFO  [Server] - ert waits... 
+12:44:42 INFO  [Server] - Server get new msg from fgh: Rock
+12:44:42 INFO  [Server] - fgh go Rock
+12:44:42 INFO  [Server] - fgh WINS Result [ert 0:1 fgh]
+12:44:42 INFO  [Server] - fgh waits... 
+12:44:42 INFO  [Server] - ert stops waiting
+12:44:44 INFO  [Server] - Server get new msg from ert: Paper
+12:44:44 INFO  [Server] - ert go Paper
+12:44:44 INFO  [Server] - fgh to play
+12:44:44 INFO  [Server] - ert waits... 
+12:44:44 INFO  [Server] - fgh stops waiting
+12:44:46 INFO  [Server] - Server get new msg from fgh: Scissors
+12:44:46 INFO  [Server] - fgh go Scissors
+12:44:46 INFO  [Server] - fgh WINS Result [ert 0:2 fgh]
+12:44:46 INFO  [Server] - fgh waits... 
+12:44:46 INFO  [Server] - ert stops waiting
+12:44:48 INFO  [Server] - Server get new msg from ert: Scissors
+12:44:48 INFO  [Server] - ert go Scissors
+12:44:48 INFO  [Server] - fgh to play
+12:44:48 INFO  [Server] - ert waits... 
+12:44:48 INFO  [Server] - fgh stops waiting
+12:44:50 INFO  [Server] - Server get new msg from fgh: Rock
+12:44:50 INFO  [Server] - fgh go Rock
+12:44:50 INFO  [Server] - fgh WINS Result [ert 0:3 fgh]
+12:44:50 INFO  [Server] - fgh waits... 
+12:44:50 INFO  [Server] - ert stops waiting
+12:44:50 INFO  [Server] - fgh stops waiting
+12:44:54 INFO  [Server] - Server get new msg from fgh: new game
+12:44:57 INFO  [Server] - Server get new msg from fgh: Paper
+12:44:57 INFO  [Server] - ert must be first
+12:45:01 INFO  [Server] - server - good bye my clients
+12:45:01 INFO  [Server] - server - good bye my clients
+12:45:01 INFO  [Server] - server - good bye my clients
+12:58:00 INFO  [Server] - Server started...
+12:58:00 INFO  [Server] - server try to accept new client..
+12:58:04 INFO  [Server] - server try to accept new client..
+12:58:07 INFO  [Server] - Server get new msg from PLAYER_1: setPlayerNameasd
+12:58:07 INFO  [Server] - PLAYER_1 => asd
+12:58:10 INFO  [Server] - server try to accept new client..
+12:58:13 INFO  [Server] - Server get new msg from PLAYER_2: setPlayerNameasd
+12:58:13 INFO  [Server] - PLAYER_2 => must choose other name
+12:58:25 INFO  [Server] - Server get new msg from PLAYER_2: setPlayerNameasd
+12:58:25 INFO  [Server] - PLAYER_2 => must choose other name
+12:58:28 INFO  [Server] - Server get new msg from PLAYER_2: setPlayerNameasd
+12:58:28 INFO  [Server] - PLAYER_2 => must choose other name
+12:58:31 INFO  [Server] - Server get new msg from PLAYER_2: setPlayerNameqwe
+12:58:31 INFO  [Server] - PLAYER_2 => qwe
+12:58:34 INFO  [Server] - Server get new msg from asd: Paper
+12:58:34 INFO  [Server] - asd go Paper
+12:58:34 INFO  [Server] - qwe to play
+12:58:34 INFO  [Server] - asd waits... 
+12:58:35 INFO  [Server] - Server get new msg from qwe: Scissors
+12:58:35 INFO  [Server] - qwe go Scissors
+12:58:35 INFO  [Server] - qwe WINS Result [asd 0:1 qwe]
+12:58:35 INFO  [Server] - qwe waits... 
+12:58:35 INFO  [Server] - asd stops waiting
+12:58:37 INFO  [Server] - server try to accept new client..
+12:58:40 INFO  [Server] - Server get new msg from Spectator: setPlayerNameasd
+12:58:40 INFO  [Server] - Spectator => must choose other name
+12:58:41 INFO  [Server] - Server get new msg from Spectator: setPlayerNameasd
+12:58:41 INFO  [Server] - Spectator => must choose other name
+12:58:43 INFO  [Server] - Server get new msg from Spectator: setPlayerNamevn
+12:58:43 INFO  [Server] - Spectator => vn
+12:58:48 INFO  [Server] - Server get new msg from asd: Rock
+12:58:48 INFO  [Server] - asd go Rock
+12:58:48 INFO  [Server] - qwe to play
+12:58:48 INFO  [Server] - asd waits... 
+12:58:48 INFO  [Server] - qwe stops waiting
+12:58:51 INFO  [Server] - Server get new msg from qwe: Scissors
+12:58:51 INFO  [Server] - qwe go Scissors
+12:58:51 INFO  [Server] - TIE GAME Result [asd 1:1 qwe]
+12:58:51 INFO  [Server] - qwe waits... 
+12:58:51 INFO  [Server] - asd stops waiting
+12:58:54 INFO  [Server] - Server get new msg from asd: Paper
+12:58:54 INFO  [Server] - asd go Paper
+12:58:54 INFO  [Server] - qwe to play
+12:58:54 INFO  [Server] - asd waits... 
+12:58:54 INFO  [Server] - qwe stops waiting
+12:58:55 INFO  [Server] - Server get new msg from qwe: Rock
+12:58:55 INFO  [Server] - qwe go Rock
+12:58:55 INFO  [Server] - asd WINS Result [asd 2:1 qwe]
+12:58:55 INFO  [Server] - qwe waits... 
+12:58:55 INFO  [Server] - asd stops waiting
+12:58:55 INFO  [Server] - qwe stops waiting
+12:59:01 INFO  [Server] - server - good bye my clients
+12:59:01 INFO  [Server] - server - good bye my clients
+12:59:01 INFO  [Server] - server - good bye my clients
+13:03:35 ERROR [Server] - Cannot create server now ... maybe port 8090 is used.
+13:03:40 INFO  [Server] - Server started...
+13:03:40 INFO  [Server] - server try to accept new client..
+13:03:43 INFO  [Server] - server try to accept new client..
+13:03:45 INFO  [Server] - Server get new msg from PLAYER_1: setPlayerNameasd
+13:03:45 INFO  [Server] - PLAYER_1 => asd
+13:03:48 INFO  [Server] - server try to accept new client..
+13:03:50 INFO  [Server] - Server get new msg from PLAYER_2: setPlayerNameasd
+13:03:50 INFO  [Server] - PLAYER_2 => must choose other name
+13:03:52 INFO  [Server] - Server get new msg from PLAYER_2: setPlayerNameasd
+13:03:52 INFO  [Server] - PLAYER_2 => must choose other name
+13:03:55 INFO  [Server] - Server get new msg from PLAYER_2: setPlayerNameqwe
+13:03:55 INFO  [Server] - PLAYER_2 => qwe
+13:03:57 INFO  [Server] - server - good bye my clients
+13:03:57 INFO  [Server] - server - good bye my clients
+13:06:06 INFO  [Server] - Server started...
+13:06:06 INFO  [Server] - server try to accept new client..
+13:06:10 INFO  [Server] - server try to accept new client..
+13:06:15 INFO  [Server] - Server get new msg from PLAYER_1: setPlayerNameasd
+13:06:15 INFO  [Server] - PLAYER_1 => asd
+13:06:17 INFO  [Server] - server try to accept new client..
+13:06:20 INFO  [Server] - Server get new msg from PLAYER_2: setPlayerNameasd
+13:06:20 INFO  [Server] - PLAYER_2 => must choose other name
+13:06:23 INFO  [Server] - Server get new msg from PLAYER_2: setPlayerNameasd
+13:06:23 INFO  [Server] - PLAYER_2 => must choose other name
+13:06:41 INFO  [Server] - server - good bye my clients
+13:06:41 INFO  [Server] - server - good bye my clients
+13:08:12 INFO  [Server] - Server started...
+13:08:12 INFO  [Server] - server try to accept new client..
+13:08:16 INFO  [Server] - server try to accept new client..
+13:08:18 INFO  [Server] - Server get new msg from PLAYER_1: setPlayerNameasd
+13:08:18 INFO  [Server] - PLAYER_1 => asd
+13:08:20 INFO  [Server] - server try to accept new client..
+13:08:22 INFO  [Server] - Server get new msg from PLAYER_2: setPlayerNameasd
+13:08:22 INFO  [Server] - PLAYER_2 => must choose other name
+13:08:25 INFO  [Server] - Server get new msg from PLAYER_2: setPlayerNameasd
+13:08:25 INFO  [Server] - PLAYER_2 => must choose other name
+13:08:27 INFO  [Server] - Server get new msg from PLAYER_2: setPlayerNameqwe
+13:08:27 INFO  [Server] - PLAYER_2 => qwe
+13:08:30 INFO  [Server] - Server get new msg from asd: Paper
+13:08:30 INFO  [Server] - asd go Paper
+13:08:30 INFO  [Server] - qwe to play
+13:08:30 INFO  [Server] - asd waits... 
+13:08:30 INFO  [Server] - Server get new msg from qwe: Scissors
+13:08:30 INFO  [Server] - qwe go Scissors
+13:08:30 INFO  [Server] - qwe WINS Result [asd 0:1 qwe]
+13:08:30 INFO  [Server] - qwe waits... 
+13:08:30 INFO  [Server] - asd stops waiting
+13:08:32 INFO  [Server] - server - good bye my clients
+13:08:32 INFO  [Server] - qwe stops waiting
+13:08:32 INFO  [Server] - server - good bye my clients
