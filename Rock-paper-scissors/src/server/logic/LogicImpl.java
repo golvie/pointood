@@ -2,7 +2,11 @@ package server.logic;
 
 import java.util.ArrayList;
 import java.util.List;
-
+/**
+ * Implemetde class for game logic
+ * @author V&N
+ * @date May 8, 2010
+ */
 @SuppressWarnings("serial")
 public class LogicImpl implements Logic {
     

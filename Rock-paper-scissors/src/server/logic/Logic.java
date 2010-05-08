@@ -6,8 +6,9 @@ package server.logic;
 import java.io.Serializable;
 
 /**
+ * Interface for game logic 
  * @author 
- * Apr 12, 2010
+ * @date Apr 12, 2010
  */
 public interface Logic extends Serializable {
 	
@@ -23,10 +24,6 @@ public interface Logic extends Serializable {
 	
 	public boolean roundComplited();
 
-	/**
-	 * @param name
-	 * @return
-	 */
 	public String getGameResult(String[] name);
 	
 }

@@ -16,7 +16,11 @@ import server.logic.Logic;
 import common.messages.Message;
 import common.messages.MsgObject;
 
-
+/**
+ * Person's thread on the server side
+ * @author V&N 
+ * @date May 8, 2010
+ */
 public class Person extends Thread {
 	
 	private Socket socket;
@@ -64,12 +68,12 @@ public class Person extends Thread {
 		else
 			players.add( this ); // all others for spectators
 
-		System.out.println("hello "+this.getName());
+		System.out.println("hello "+getName());
 
 		try {
 			while(true) {
 					
-				int waste = this.in.available();
+				int waste = in.available();
 				for(int i=0; i<waste; i++)
 					in.readByte(); //clear buffer from queue - we need the last line
 				
@@ -77,7 +81,7 @@ public class Person extends Thread {
 				msg = inR.readLine();
 				
 				if (msg != null) {
-					 Server.log.info("Server get new msg from "+this.getName()+": "+msg);
+					 Server.log.info("Server get new msg from "+getName()+": "+msg);
 					 MsgObject response = new MsgObject();
 					 if (msg.equals("new game") && type != Server.SPECTATOR) {
 						 response.setMessage(msg);
@@ -92,11 +96,11 @@ public class Person extends Thread {
 						 Server.log.info(this.getName()+" would like to know all players names");
 						 Server.log.info(getAllNames());
 						 response.setMessage(getAllNames());
-						 this.sendMessage(response);
+						 sendMessage(response);
 					 } else if(msg.length()>12) { 
 						 if (msg.substring(0,13).equals("setPlayerName")) {
 							 if (validateName(msg.substring(13))) {
-								 Server.log.info(this.getName()+" => must choose other name");
+								 Server.log.info(getName()+" => must choose other name");
 								 response.setName(getName());
 								 response.setMessage("isRepeatName");
 							 }

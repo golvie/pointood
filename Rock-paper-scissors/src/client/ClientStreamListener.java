@@ -12,14 +12,15 @@ import common.messages.MsgObject;
 
 
 /**
- * @author 
- * Apr 10, 2010
+ * Listener for client side
+ * @author V&N
+ * @date Apr 10, 2010
  */
 public class ClientStreamListener extends Thread {
 
 	private ObjectInputStream in;
 	private ClientApplication app;
-	private Color color = null;
+	private Color color = null; // each player has own color
 	
 	public ClientStreamListener( ClientApplication app) throws IOException {
 		this.app = app;
