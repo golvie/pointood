@@ -19,7 +19,7 @@ import common.messages.MsgObject;
 /**
  * Person's thread on the server side
  * @author V&N 
- * @date May 8, 2010
+ * @version May 8, 2010
  */
 public class Person extends Thread {
 	

@@ -9,7 +9,7 @@ import java.io.Serializable;
 /**
  * Class for sending complicated objects
  * @author V&N
- * @date Apr 11, 2010
+ * @version Apr 11, 2010
  */
 @SuppressWarnings("serial")
 public class MsgObject implements Serializable {

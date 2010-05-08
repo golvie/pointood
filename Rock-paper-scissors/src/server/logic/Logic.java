@@ -7,8 +7,8 @@ import java.io.Serializable;
 
 /**
  * Interface for game logic 
- * @author 
- * @date Apr 12, 2010
+ * @author V&N
+ * @version Apr 12, 2010
  */
 public interface Logic extends Serializable {
 	

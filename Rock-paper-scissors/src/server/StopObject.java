@@ -6,7 +6,7 @@ package server;
 /**
  * This class is needed for regulation who is moving now
  * @author V&N
- * @date Apr 11, 2010
+ * @version Apr 11, 2010
  */
 public class StopObject {
 
