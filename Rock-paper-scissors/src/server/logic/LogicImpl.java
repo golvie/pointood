@@ -1,11 +1,10 @@
-package common.logic;
+package server.logic;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 @SuppressWarnings("serial")
-public class LogicImpl implements Logic, Serializable {
+public class LogicImpl implements Logic {
     
 	private List<String> moves;
 	
@@ -35,6 +34,9 @@ public class LogicImpl implements Logic, Serializable {
 		System.out.println( logic.getGameStatus() );
 		
 		System.out.println(logic.getGameResult( name));
+		
+		String str = "=> GAME OVER";
+		System.out.println(str.substring(str.length()-9, str.length()));
 	}
 	
 	@Override

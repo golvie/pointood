@@ -21,6 +21,13 @@ import server.Server;
  * 
  * @author 
  *
+ * GUI - Client application class for Rock-Paper-Scissor
+ * 
+ * firstly, user must set his name - board becomes visible
+ * after that user can make his move and waits his opponent
+ * user can also to view list of all participants names - players and spectators
+ * 
+ * after the end of the game - user can choose new game option
  */
 @SuppressWarnings("serial")
 public class ClientApplication extends JPanel {
@@ -41,6 +48,7 @@ public class ClientApplication extends JPanel {
 	protected JTextField    statusField = new JTextField();
 	protected JTextField    setNameField = new JTextField(8);
 	protected String name;
+	protected int type;
 	
 	public static void main(String[] args) {
 		window = new JFrame("Rock Paper Scissors");
@@ -87,12 +95,7 @@ public class ClientApplication extends JPanel {
 		gamePanel.add(buttonScissors);
 		
 		gamePanel.setVisible(false);
-	}
-
-	public void makePanels() {
-		if (name != null)
-			controlPanel.remove(setNameButton);
-		
+		newGameButton.setVisible(false);
 	}
 	
 	private void InitButtons() {

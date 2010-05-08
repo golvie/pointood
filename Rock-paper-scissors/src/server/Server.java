@@ -7,8 +7,9 @@ import java.util.ArrayList;
 
 import org.apache.log4j.Logger;
 
-import common.logic.Logic;
-import common.logic.LogicImpl;
+import server.logic.Logic;
+import server.logic.LogicImpl;
+
 import common.messages.Message;
 
 /**

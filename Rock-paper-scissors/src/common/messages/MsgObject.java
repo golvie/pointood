@@ -5,7 +5,6 @@ package common.messages;
 
 import java.io.Serializable;
 
-import common.logic.Logic;
 
 /**
  * @author 
@@ -17,20 +16,9 @@ public class MsgObject implements Serializable {
 	private String message;
 	private String name;
 	private String status;
-	private Logic logic;
+	private boolean win;
+	private int type;
 	
-	/**
-	 * @return the logic
-	 */
-	public Logic getLogic() {
-		return logic;
-	}
-	/**
-	 * @param logic the logic to set
-	 */
-	public void setLogic(Logic logic) {
-		this.logic = logic;
-	}
 	
 	/**
 	 * @return the message
@@ -55,6 +43,18 @@ public class MsgObject implements Serializable {
 	}
 	public String getStatus() {
 		return status;
+	}
+	public void setWin(boolean win) {
+		this.win = win;
+	}
+	public boolean isWin() {
+		return win;
+	}
+	public void setType(int type) {
+		this.type = type;
+	}
+	public int getType() {
+		return type;
 	}
 
 }
