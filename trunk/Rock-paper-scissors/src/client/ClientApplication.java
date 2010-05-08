@@ -26,7 +26,7 @@ import server.Server;
  * 
  * after the end of the game - user can choose new game option
  * @author V&N
- * @date May 8, 2010
+ * @version May 8, 2010
  */
 @SuppressWarnings("serial")
 public class ClientApplication extends JPanel {

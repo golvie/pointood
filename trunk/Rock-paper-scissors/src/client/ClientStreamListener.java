@@ -14,7 +14,7 @@ import common.messages.MsgObject;
 /**
  * Listener for client side
  * @author V&N
- * @date Apr 10, 2010
+ * @version Apr 10, 2010
  */
 public class ClientStreamListener extends Thread {
 

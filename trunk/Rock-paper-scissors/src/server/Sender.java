@@ -13,7 +13,7 @@ import common.messages.MsgObject;
 /**
  * This class sends messages for all Persons
  * @author V&N
- * @date May 8, 2010
+ * @version May 8, 2010
  */
 public class Sender extends Thread {
 	

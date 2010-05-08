@@ -15,7 +15,7 @@ import common.messages.Message;
 /**
  * This server application opens a port and listens for clients to connect.
  * @author V&N
- * @date Apr 13, 2010
+ * @version Apr 13, 2010
  */
 public class Server {
 	public static final int PORT = 8090;
