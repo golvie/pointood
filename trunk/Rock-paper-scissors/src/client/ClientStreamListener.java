@@ -45,28 +45,34 @@ public class ClientStreamListener extends Thread {
 						String msgForClient = "";
 						if (name != null) msgForClient += (name+": ");
 						if (msg != null) msgForClient += (msg+" ");
+						Color bgColor = Color.GRAY;
 						if (status != null) {
 							msgForClient += (status);
 						
 							if (status.length()>10)
 								status = status.substring(status.length()-9, status.length());	
 							if (status.equals("GAME OVER") && app.type < 3) {
-									if (app.name.equals(name)) 
-										if (res.isWin())
+								bgColor = Color.GREEN;	
+								if (app.name.equals(name)) 
+										if (res.isWin()) {
 											msgForClient += "  You are winner!";
-										else
+										} else {
 											msgForClient += "  You are loser!";
+											bgColor = Color.RED;
+										}
 									else
-										if (!res.isWin())
+										if (!res.isWin()) {
 											msgForClient += "  You are winner!";
-										else
+										} else {
 											msgForClient += "  You are loser!";
+											bgColor = Color.RED;
+										}
 									//app.statusField.setText(msgForClient);
 									app.newGameButton.setVisible(true);
 									//ClientApplication.window.pack();
 							}
 						}
-						
+						app.statusField.setBackground(bgColor);
 						app.statusField.setText(msgForClient); 
 						
 						if(msg.equals("new game")) {
