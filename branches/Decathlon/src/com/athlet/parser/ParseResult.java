@@ -1,5 +1,5 @@
-package com.simple.parser;
-import com.simple.sportsman.Result;
+package com.athlet.parser;
+import com.athlet.sportsman.Result;
 
 
 /**
@@ -16,12 +16,12 @@ public class ParseResult {
 		Result res = new Result();
 
 		try {
-			if (n==10) {	
-				res.setMeters(Double.valueOf(line.substring(0, 1)));
+			if (n==10) {	// track event
+				res.setMin(Double.valueOf(line.substring(0, 1)));
 				res.setSec(Double.valueOf(line.substring(2)));
-			} else if (n==1 || n==5 || n==6){
+			} else if (n==1 || n==5 || n==6) {  // track event
 				res.setSec(Double.valueOf(line));
-			} else {
+			} else {  // field event
 				res.setMeters(Double.valueOf(line));
 			}
 				

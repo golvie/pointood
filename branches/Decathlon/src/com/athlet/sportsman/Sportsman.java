@@ -1,4 +1,4 @@
-package com.simple.sportsman;
+package com.athlet.sportsman;
 
 import java.util.ArrayList;
 

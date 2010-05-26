@@ -1,8 +1,8 @@
-package com.simple.tests;
+package com.athlet.tests;
 import java.io.File;
 import java.io.IOException;
 
-import com.simple.input.InputRead;
+import com.athlet.input.InputRead;
 
 /**
  * 
@@ -17,8 +17,9 @@ public class Main {
 	/** Simple test harness.   */
 	  public static void main (String... aArguments) throws IOException {
 	    File testFile = new File("Decathlon_input.txt");
+	    InputRead input = new InputRead();
 	    System.out.println("Original file contents: \n");
-	    InputRead.print(testFile);
+	    input.print(testFile);
 	    
 	  }
 

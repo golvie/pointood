@@ -1,4 +1,4 @@
-package com.simple.input;
+package com.athlet.input;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -7,8 +7,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.regex.Pattern;
 
-import com.simple.parser.ParseResult;
-import com.simple.sportsman.Sportsman;
+import com.athlet.parser.ParseResult;
+import com.athlet.sportsman.Sportsman;
 
 /**
  * 
@@ -26,7 +26,7 @@ public class InputRead {
 	  *
 	  * @param aFile is a file which already exists and can be read.
 	  */
-	  static public ArrayList<Sportsman> getContents(File aFile) {
+	  public ArrayList<Sportsman> getContents(File aFile) {
 	    //...checks on aFile are elided
 	    ArrayList<String> contents = new ArrayList<String>();
 	    
@@ -57,7 +57,7 @@ public class InputRead {
 	    return getSportsmenList(contents);
 	  }
 
-	  static public ArrayList<Sportsman> 
+	  public ArrayList<Sportsman> 
 	  			getSportsmenList(ArrayList<String> contents){
 		  
 		  ArrayList<Sportsman> men = new ArrayList<Sportsman>();
@@ -69,7 +69,7 @@ public class InputRead {
 		  return men;
 	  }
 	  
-	  public static Sportsman getSportsmen(String line){
+	  public Sportsman getSportsmen(String line){
 		  
 		  String[] x = Pattern.compile(";").split(line);
 		  
@@ -92,7 +92,7 @@ public class InputRead {
 		  return man;
 	  }
 	
-	  public static void print(File aFile) {
+	  public void print(File aFile) {
 		  
 		  ArrayList<Sportsman> men = getContents(aFile);
 		  
