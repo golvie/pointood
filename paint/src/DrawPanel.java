@@ -5,14 +5,13 @@ import java.util.Vector;
 
 import javax.swing.JPanel;
 
-@SuppressWarnings("serial")
 public class DrawPanel extends JPanel {
 
 	private Vector<Line> lines = new Vector<Line>();
 	private Vector<Color> colors = new Vector<Color>();
 	private Color usingColor = Color.black;
 	
-	DrawPanel(){
+	public DrawPanel() {
 		setLayout(new BorderLayout());
 		setBackground(Color.white);		
 	}
@@ -20,9 +19,11 @@ public class DrawPanel extends JPanel {
 	public void setColor(Color color){
     	usingColor = color;
     }
+
     public Color getColor(){
     	return usingColor;
     }
+
 	public void deleteContent() {
 		lines.clear();
 		colors.clear();
@@ -34,7 +35,7 @@ public class DrawPanel extends JPanel {
         g.drawLine(line.getFrom().x, line.getFrom().y, line.getTo().x, line.getTo().y );
     }
     
-    public void lisaUusJoon(Line line) {
+    public void addNewLine(Line line) {
         lines.add(line);
         colors.add(usingColor);
         Graphics g = getGraphics();
@@ -45,11 +46,10 @@ public class DrawPanel extends JPanel {
 	@Override
 	public void paint(Graphics g) {       		
 	        super.paint(g);
-	        joonistaJooned(g);
+	        drawLines(g);
 	}
 
-	private void joonistaJooned(Graphics g) {
-
+	private void drawLines(Graphics g) {
 		for (int i = 0; i < lines.size() && i < colors.size(); i++) {
             Line line = lines.get(i);
             Color color = colors.get(i);

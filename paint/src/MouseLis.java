@@ -22,25 +22,24 @@ public class MouseLis implements MouseListener, MouseMotionListener {
 		param = 0;
 	}
 	
-	@Override
+
 	public void mousePressed(MouseEvent e) {
 		from = e.getPoint();
 		toX = e.getPoint();
 	}
 
-	@Override
 	public void mouseReleased(MouseEvent e) {
 		to = e.getPoint();
 		Line line = new Line(from, to);
-		drawPanel.lisaUusJoon(line);
+		drawPanel.addNewLine(line);
 	}
 	  
-	@Override
+
 	public void mouseDragged(MouseEvent e) {
 		if(param == 1) {
 			Line line = new Line(from, e.getPoint());
 			from = e.getPoint();
-			drawPanel.lisaUusJoon(line);
+			drawPanel.addNewLine(line);
 		} else {
 			Color xorColor = new Color(255, 255, 255);
 			Graphics g = drawPanel.getGraphics();
@@ -54,16 +53,16 @@ public class MouseLis implements MouseListener, MouseMotionListener {
 		
 	}
 	
-	@Override
+
 	public void mouseClicked(MouseEvent e) {}
 
-	@Override
+
 	public void mouseEntered(MouseEvent e) {}
 
-	@Override
+
 	public void mouseExited(MouseEvent e) {}
 	
-	@Override
+	
 	public void mouseMoved(MouseEvent e) {}
 	
 }
