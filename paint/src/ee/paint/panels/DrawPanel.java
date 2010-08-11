@@ -1,3 +1,7 @@
+package ee.paint.panels;
+
+import ee.paint.components.Line;
+
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Graphics;
@@ -50,13 +54,11 @@ public class DrawPanel extends JPanel {
 	}
 
 	private void drawLines(Graphics g) {
-		for (int i = 0; i < lines.size() && i < colors.size(); i++) {
+        for (int i = 0; i < lines.size() && lines.size() == colors.size(); i++) {
             Line line = lines.get(i);
-            Color color = colors.get(i);
-        	g.setColor(color);
+        	g.setColor(colors.get(i));
             g.drawLine(line.getFrom().x, line.getFrom().y, line.getTo().x, line.getTo().y );
-        }
-        
+        }    
 	}
 	
 }

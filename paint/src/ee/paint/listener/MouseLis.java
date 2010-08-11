@@ -1,26 +1,34 @@
-import java.awt.Color;
-import java.awt.Graphics;
-import java.awt.Point;
+package ee.paint.listener;
+
+import ee.paint.components.Line;
+import ee.paint.panels.DrawPanel;
+
+import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 
 public class MouseLis implements MouseListener, MouseMotionListener {
-     
+
+    private DrawPanel drawPanel;
 	private Point from, to;
 	private Point toX;
-	private int param = 1; 
-	private DrawPanel drawPanel;
+	private boolean isFreeLine = true; 
+
    
 	public MouseLis(DrawPanel draw) {
 		this.drawPanel = draw;
 	}
-	public void useFreeLine() {
-		param = 1;
-	}
-	public void useLine() {
-		param = 0;
-	}
+
+    public void setFreeLine(boolean freeLine) {
+        this.isFreeLine = freeLine;
+
+        if (isFreeLine)
+            drawPanel.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+        else
+            drawPanel.setCursor(new Cursor(Cursor.CROSSHAIR_CURSOR));
+
+    }
 	
 
 	public void mousePressed(MouseEvent e) {
@@ -36,7 +44,7 @@ public class MouseLis implements MouseListener, MouseMotionListener {
 	  
 
 	public void mouseDragged(MouseEvent e) {
-		if(param == 1) {
+		if ( isFreeLine ) {
 			Line line = new Line(from, e.getPoint());
 			from = e.getPoint();
 			drawPanel.addNewLine(line);
