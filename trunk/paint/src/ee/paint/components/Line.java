@@ -1,3 +1,5 @@
+package ee.paint.components;
+
 import java.awt.Point;
 
 public class Line {

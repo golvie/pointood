@@ -1,3 +1,8 @@
+package ee.paint.panels;
+
+import ee.paint.listener.MouseLis;
+import ee.paint.panels.DrawPanel;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -47,7 +52,7 @@ public class PaintFrame extends JFrame {
 	public JPanel rbPanel () {
 		group = new ButtonGroup();
 		freeLine = new JRadioButton("Freeline", true);
-		staticLine = new JRadioButton("Line");
+		staticLine = new JRadioButton("ee.paint.components.Line");
 		group.add( freeLine );
 		group.add( staticLine );
 
@@ -60,14 +65,14 @@ public class PaintFrame extends JFrame {
 
 		freeLine.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				listener.useFreeLine();
-				System.out.println("Free Line");
+				listener.setFreeLine(true);
+				System.out.println("Free ee.paint.components.Line");
 			}
 		});
 		staticLine.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				listener.useLine();
-				System.out.println("Just Line");
+				listener.setFreeLine(false);
+				System.out.println("Just ee.paint.components.Line");
 			}
 		});
 

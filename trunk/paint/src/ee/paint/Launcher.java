@@ -1,3 +1,6 @@
+package ee.paint;
+
+import ee.paint.panels.PaintFrame;
 
 public class Launcher {
 
