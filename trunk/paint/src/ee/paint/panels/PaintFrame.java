@@ -23,6 +23,11 @@ public class PaintFrame extends JFrame {
 	private DrawPanel drawPanel;
     private final MouseLis listener;
 
+    public static final String FREE_LINE = "Free line";
+    public static final String JUST_LINE = "Just line";
+    public static final String COLOR_CHOOSER = "Choose color";
+    public static final String PALETTE = "Palette";
+
 	public PaintFrame (String title) {
 		setTitle(title);
 		Toolkit kit = Toolkit.getDefaultToolkit();
@@ -51,28 +56,28 @@ public class PaintFrame extends JFrame {
 
 	public JPanel rbPanel () {
 		group = new ButtonGroup();
-		freeLine = new JRadioButton("Freeline", true);
-		staticLine = new JRadioButton("ee.paint.components.Line");
+		freeLine = new JRadioButton(FREE_LINE, true);
+		staticLine = new JRadioButton(JUST_LINE);
 		group.add( freeLine );
 		group.add( staticLine );
 
 		radioBlock = new JPanel();
 		radioBlock.setLayout(new BoxLayout(radioBlock, BoxLayout.Y_AXIS));
 		radioBlock.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-		radioBlock.setBorder(BorderFactory.createTitledBorder("palette"));
+		radioBlock.setBorder(BorderFactory.createTitledBorder(PALETTE));
 		radioBlock.add(freeLine);
 		radioBlock.add(staticLine);
 
 		freeLine.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				listener.setFreeLine(true);
-				System.out.println("Free ee.paint.components.Line");
+				//System.out.println(FREE_LINE);
 			}
 		});
 		staticLine.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				listener.setFreeLine(false);
-				System.out.println("Just ee.paint.components.Line");
+				//System.out.println(JUST_LINE);
 			}
 		});
 
@@ -80,7 +85,7 @@ public class PaintFrame extends JFrame {
 	}
 
 	public JPanel rbAndColor () {
-		butColor = new JButton("Color");
+		butColor = new JButton(COLOR_CHOOSER);
 
 		rbPanelAndColor = new JPanel();
 		rbPanelAndColor.setLayout(new BorderLayout());
@@ -89,9 +94,9 @@ public class PaintFrame extends JFrame {
 
 		butColor.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Color col = JColorChooser.showDialog(null,"Choose color", Color.BLACK);
+				Color col = JColorChooser.showDialog(null, COLOR_CHOOSER, Color.BLACK);
 				drawPanel.setColor(col);
-				System.out.println("Button color");
+				//System.out.println(COLOR_CHOOSER);
 			}
 		});
 
@@ -109,12 +114,11 @@ public class PaintFrame extends JFrame {
 		butClear.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				drawPanel.deleteContent();
-				System.out.println("Button Clear");
+				//System.out.println("Button Clear");
 			}
 		});
 
 		return left;
 	}
-
 
 }
